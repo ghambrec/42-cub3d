@@ -1,24 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   map_char_validation.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/25 15:34:18 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/08/25 17:01:11 by rstumpf          ###   ########.fr       */
+/*   Created: 2025/08/25 15:37:20 by rstumpf           #+#    #+#             */
+/*   Updated: 2025/08/25 16:12:29 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int argc, char **argv)
+static int	check_chars(char c)
 {
-	t_map_info	map_info;
+	if (c == 'N' || c == '0' || c == '1' || c == 'W'
+		|| c == 'S' || c == 'E' || c == '\n')
+		return (1);
+	return (-1);
+}
 
-	arg_validation(argv, argc);
-	map_info.map_name = argv[1];
-	map_validation(&map_info);
-	free(map_info.map_string);
-	printf("Hallo!\n");
+void	char_validation(char *map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+	{
+		if (check_chars(map[i]) == -1)
+		{
+			ft_putstr_fd("Map is invalid! Unallowed character used\n", 2);
+			exit(EXIT_FAILURE);
+		}
+		i++;
+	}
+	return ;
 }

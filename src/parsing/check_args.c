@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/25 15:34:18 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/08/25 17:01:11 by rstumpf          ###   ########.fr       */
+/*   Created: 2025/08/25 15:10:28 by rstumpf           #+#    #+#             */
+/*   Updated: 2025/08/25 15:46:18 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int argc, char **argv)
+void	arg_validation(char **argv, int n)
 {
-	t_map_info	map_info;
-
-	arg_validation(argv, argc);
-	map_info.map_name = argv[1];
-	map_validation(&map_info);
-	free(map_info.map_string);
-	printf("Hallo!\n");
+	if (n != 2)
+	{
+		ft_putstr_fd("Error! Only one argument is allowed\n", 2);
+		exit(EXIT_FAILURE);
+	}
+	if (ft_strncmp(argv[1] + ft_strlen(argv[1]) - 4, ".cub", 4) != 0)
+	{
+		ft_putstr_fd("Error! Your map has to end with .cub\n", 2);
+		exit(EXIT_FAILURE);
+	}
+	return ;
 }

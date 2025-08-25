@@ -9,7 +9,7 @@ NC = \033[0m
 NAME := cub3d
 CC := cc
 INCLUDE_DIR := ./inc
-CFLAGS = -Wall -Wextra -Werror -I $(INCLUDE_DIR)
+CFLAGS = -Wall -Wextra -Werror -I $(INCLUDE_DIR) -g
 
 # ---------- LIB ---------- #
 LIB_DIR = ./lib
@@ -21,15 +21,15 @@ MLX_NAME = $(MLX_DIR)/build/libmlx42.a
 MLX_FULL = $(MLX_NAME) -ldl -lglfw -pthread -lm
 
 # ---------- SOURCES ---------- #
-SOURCE_DIRS = src
+SOURCE_DIRS =	src \
+				src/parsing
 
 VPATH = $(SOURCE_DIRS)
 
 SOURCES = main.c
 
-# SHELL_UTILS
-# SOURCES += get_shell.c \
-			init_shell.c
+# PARSING
+SOURCES += check_args.c map_char_validation.c map_validation.c map_open.c
 
 
 # ---------- OBJECTS ---------- #

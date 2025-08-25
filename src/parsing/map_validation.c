@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   map_validation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/25 15:34:18 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/08/25 17:01:11 by rstumpf          ###   ########.fr       */
+/*   Created: 2025/08/25 15:47:13 by rstumpf           #+#    #+#             */
+/*   Updated: 2025/08/25 16:53:59 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int argc, char **argv)
+void	map_validation(t_map_info *map_info)
 {
-	t_map_info	map_info;
-
-	arg_validation(argv, argc);
-	map_info.map_name = argv[1];
-	map_validation(&map_info);
-	free(map_info.map_string);
-	printf("Hallo!\n");
+	map_open(map_info);
+	char_validation(map_info->map_string);
 }
