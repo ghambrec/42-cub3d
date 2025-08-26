@@ -21,15 +21,18 @@ MLX_NAME = $(MLX_DIR)/build/libmlx42.a
 MLX_FULL = $(MLX_NAME) -ldl -lglfw -pthread -lm
 
 # ---------- SOURCES ---------- #
-SOURCE_DIRS =	src \
+SOURCE_DIRS = 	src \
 				src/parsing
 
 VPATH = $(SOURCE_DIRS)
 
-SOURCES = main.c
+SOURCES = main_gha.c
 
 # PARSING
-SOURCES += check_args.c map_char_validation.c map_validation.c map_open.c
+SOURCES += 	check_args.c \
+			map_char_validation.c \
+			map_validation.c \
+			map_open.c
 
 
 # ---------- OBJECTS ---------- #
