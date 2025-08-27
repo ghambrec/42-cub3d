@@ -23,7 +23,9 @@ MLX_FULL = $(MLX_NAME) -ldl -lglfw -pthread -lm
 # ---------- SOURCES ---------- #
 SOURCE_DIRS = 	src \
 				src/parsing \
-				src/exit
+				src/exit \
+				src/minimap \
+				src/hooks
 
 VPATH = $(SOURCE_DIRS)
 
@@ -38,6 +40,12 @@ SOURCES += 	check_args.c \
 # EXIT
 SOURCES +=	exit.c \
 			clean_game.c
+
+# HOOKS
+SOURCES +=	key_hook.c
+
+# MINIMAP
+SOURCES +=	_mm.c
 
 
 # ---------- OBJECTS ---------- #

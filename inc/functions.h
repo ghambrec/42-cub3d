@@ -15,4 +15,10 @@ void	exit_success(t_game *game);
 void	exit_failure(t_game *game, char *msg);
 void	clean_game(t_game *game);
 
+// HOOKS
+void	key_hook(mlx_key_data_t keydata, void *param);
+
+// MINIMAP
+void	create_minimap(t_game *game);
+
 #endif

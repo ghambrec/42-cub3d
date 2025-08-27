@@ -5,8 +5,9 @@
 
 // COLORS
 # define CMM_WALL ((uint32_t)0x2E2E2E80)
-# define CMM_FLOOR ((uint32_t)0xE6E2D3FF)
-# define CMM_PLAYER ((uint32_t)0xFFD000FF)
+# define CMM_FLOOR ((uint32_t)0xE6E2D380)
+# define CMM_PLAYER ((uint32_t)0xFFD00080)
+# define CMM_DIR ((uint32_t)0xFF7A0080)
 
 
 # define BLACK ((uint32_t)0x000000FF)
