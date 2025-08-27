@@ -22,7 +22,8 @@ MLX_FULL = $(MLX_NAME) -ldl -lglfw -pthread -lm
 
 # ---------- SOURCES ---------- #
 SOURCE_DIRS = 	src \
-				src/parsing
+				src/parsing \
+				src/exit
 
 VPATH = $(SOURCE_DIRS)
 
@@ -33,6 +34,10 @@ SOURCES += 	check_args.c \
 			map_char_validation.c \
 			map_validation.c \
 			map_open.c
+
+# EXIT
+SOURCES +=	exit.c \
+			clean_game.c
 
 
 # ---------- OBJECTS ---------- #
