@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_rob.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 15:34:18 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/08/25 17:01:11 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/08/27 17:32:02 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 int	main(int argc, char **argv)
 {
-	t_map_info	map_info;
+	t_game	game;
 
+	game_init(&game);
 	arg_validation(argv, argc);
-	map_info.map_name = argv[1];
-	map_validation(&map_info);
-	free(map_info.map_string);
-	printf("Hallo!\n");
+	game.map.map_name = argv[1];
+	map_validation(&game);
+	free(game.map.map_string);
 }

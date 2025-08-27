@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_validation.c                                   :+:      :+:    :+:   */
+/*   game_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/25 15:47:13 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/08/27 17:41:20 by rstumpf          ###   ########.fr       */
+/*   Created: 2025/08/27 17:00:50 by rstumpf           #+#    #+#             */
+/*   Updated: 2025/08/27 17:02:35 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	map_validation(t_game *game)
+void	game_init(t_game *game)
 {
-	map_open(&game->map);
-	char_validation(game->map.map_string);
-	create_map(game);
-	get_player_pos(game);
-	floodfill_validation(game);
+	game->map.map2d = NULL;
+	game->map.map2d_copy = NULL;
+	game->map.map_name = NULL;
+	game->map.map_string = NULL;
 }

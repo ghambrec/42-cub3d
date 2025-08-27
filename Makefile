@@ -27,13 +27,15 @@ SOURCE_DIRS = 	src \
 
 VPATH = $(SOURCE_DIRS)
 
-SOURCES = main_gha.c
+SOURCES = main_rob.c
 
 # PARSING
 SOURCES += 	check_args.c \
 			map_char_validation.c \
 			map_validation.c \
-			map_open.c
+			map_open.c \
+			floodfill.c \
+			game_init.c
 
 # EXIT
 SOURCES +=	exit.c \
