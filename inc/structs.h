@@ -3,19 +3,27 @@
 
 #include "../lib/mlx/include/MLX42/MLX42.h"
 
+typedef struct s_minimap
+{
+	int	tile_size;
+	int	off_x;
+	int	off_y;
+} t_minimap;
+
 typedef struct s_game
 {
 	mlx_t			*mlx;
 	mlx_image_t		*img_game;
 	mlx_image_t		*img_minimap;
+	int				map_max_width;
+	int				map_max_height;
+	t_minimap		minimap;
 } t_game;
-
 
 typedef struct s_map_info
 {
 	char	*map_name;
-	char	*map_string;
-	
+	char	*map_string;	
 } t_map_info;
 
 typedef struct s_size
