@@ -9,14 +9,13 @@
 # define CMM_PLAYER ((uint32_t)0xE5393580)
 # define CMM_DIR ((uint32_t)0xFFD00080)
 
-
-// # define BLACK ((uint32_t)0x000000FF)
-// # define RED ((uint32_t)0xFF0000FF)
-// # define WHITE ((uint32_t)0xFFFFFFFF)
-// # define GREY ((uint32_t)0x808080FF)
-// # define YELLOW ((uint32_t)0xFFFF00FF)
-// # define WHITE ((uint32_t)0xFFFFFFFF)
-// # define WHITE_T ((uint32_t)0xFFFFFF40)
+// nur zum testen
+# define BLACK ((uint32_t)0x000000FF)
+# define RED ((uint32_t)0xFF0000FF)
+# define WHITE ((uint32_t)0xFFFFFFFF)
+# define GREY ((uint32_t)0x808080FF)
+# define YELLOW ((uint32_t)0xFFFF00FF)
+# define WHITE ((uint32_t)0xFFFFFFFF)
 
 // GAME
 # define GAME_SCREEN_WIDTH 1920

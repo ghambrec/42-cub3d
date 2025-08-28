@@ -119,8 +119,25 @@ void paint_player(t_game *game)
 	}
 }
 
+void	paint_direction(t_game *game)
+{
+	// hier weitermachen
+	t_position2D	pos2D;
+	int	tile_size = game->minimap.tile_size;
+	int ox = game->minimap.off_x;
+	int oy = game->minimap.off_y;
+
+	pos2D.x = game->player.x + game->player.dir_x;
+	pos2D.y = game->player.y + game->player.dir_y;
+	mlx_put_pixel(game->img_minimap, pos2D.x * tile_size + ox, pos2D.y * tile_size + oy, WHITE);
+	mlx_put_pixel(game->img_minimap, 217, 157, WHITE);
+	printf("Direct - x: %f, y: %f\n", pos2D.x * tile_size + ox, pos2D.y * tile_size + oy);
+}
+
+
 void	create_minimap(t_game *game)
 {
+	//todo fuer performance: image nicht jedes mal loeschen, sondern nur, wenn fenstergroesse sich geaendert hat
 	calculate_sizes(game);
 	mlx_delete_image(game->mlx, game->img_minimap);
 	game->img_minimap = mlx_new_image(game->mlx, game->minimap.width, game->minimap.height);
@@ -131,4 +148,5 @@ void	create_minimap(t_game *game)
 	paint_background(game);
 	paint_minimap(game);
 	paint_player(game);
+	paint_direction(game);
 }

@@ -27,8 +27,9 @@ int	main(void)
 	game.map = map;
 	game.player.x = 4.5;
 	game.player.y = 4.5;
-	// game.player.dir_x = 6;
-	// game.player.dir_y = 1;
+	// spieler schaut nach norden (oben)
+	game.player.dir_x = 0;
+	game.player.dir_y = -1;
 
 
 	// create mlx window
