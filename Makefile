@@ -42,7 +42,8 @@ SOURCES +=	exit.c \
 			clean_game.c
 
 # HOOKS
-SOURCES +=	key_hook.c
+SOURCES +=	key_hook.c \
+			resize_hook.c
 
 # MINIMAP
 SOURCES +=	_mm.c

@@ -6,14 +6,12 @@ uint32_t	get_color(char mapval)
 		return (CMM_WALL);
 	if (mapval == MV_FLOOR)
 		return (CMM_FLOOR);
-	// if (mapval == MV_PLAYER)
-	// 	return (CMM_FLOOR);
-	return (BLACK);
+	if (mapval == MV_PLAYER)
+		return (CMM_FLOOR);
+	return (CMM_WALL);
 }
 
-
-
-// paints on the current coords a tile with sile_size
+// paints on the current coords a tile with tile_size
 void	paint_tile(t_game *game, int mx, int my, char mapval)
 {
 	int x = 0;
@@ -53,7 +51,6 @@ void	paint_background(t_game *game)
 		i++;
 	}
 }
-
 
 static void	calculate_sizes(t_game *game)
 {
@@ -96,6 +93,32 @@ void paint_minimap(t_game *game)
 	}
 }
 
+// player pos = (tile_size * player_pos) + offset
+void paint_player(t_game *game)
+{
+	t_position	pos;
+	int			size;
+	int			radius;
+	int			x;
+	int			y;
+
+	pos.x = (game->player.x * game->minimap.tile_size) + game->minimap.off_x;
+	pos.y = (game->player.y * game->minimap.tile_size) + game->minimap.off_y;
+	size = game->minimap.tile_size / 4;
+	radius = size / 2;
+	y = 0;
+	while (y < size)
+	{
+		x = 0;
+		while (x < size)
+		{
+			mlx_put_pixel(game->img_minimap, pos.x - radius + x, pos.y - radius + y, CMM_PLAYER);
+			x++;
+		}
+		y++;
+	}
+}
+
 void	create_minimap(t_game *game)
 {
 	calculate_sizes(game);
@@ -107,4 +130,5 @@ void	create_minimap(t_game *game)
 		exit_failure(game, "failed to load minimap image to window (mlx_image_to_window)");
 	paint_background(game);
 	paint_minimap(game);
+	paint_player(game);
 }

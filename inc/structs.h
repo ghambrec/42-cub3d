@@ -5,6 +5,18 @@
 
 // player in minimap aiuf P setzen und blickrichtung in dem eigenen player struct speichern
 
+typedef struct s_position2d
+{
+	double x;
+	double y;
+} t_position2d;
+
+typedef struct s_position
+{
+	int x;
+	int y;
+} t_position;
+
 typedef struct s_minimap
 {
 	uint32_t	width;

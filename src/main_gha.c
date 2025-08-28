@@ -25,8 +25,10 @@ int	main(void)
 	game.map_max_width = 10;
 	game.map_max_height = 6;
 	game.map = map;
-	game.player.x = 4;
-	game.player.y = 4;
+	game.player.x = 4.5;
+	game.player.y = 4.5;
+	// game.player.dir_x = 6;
+	// game.player.dir_y = 1;
 
 
 	// create mlx window
@@ -51,6 +53,7 @@ int	main(void)
 		
 
 	mlx_key_hook(game.mlx, &key_hook, &game);
+	mlx_resize_hook(game.mlx, &resize_hook, &game);
 	mlx_loop(game.mlx);
 	mlx_terminate(game.mlx);
 	return (EXIT_SUCCESS);

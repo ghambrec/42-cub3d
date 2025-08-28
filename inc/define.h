@@ -4,14 +4,15 @@
 # include <stdint.h>
 
 // COLORS
-# define CMM_WALL ((uint32_t)0x2E2E2E80)
-# define CMM_FLOOR ((uint32_t)0xE6E2D380)
-# define CMM_PLAYER ((uint32_t)0xFFD00080)
-# define CMM_DIR ((uint32_t)0xFF7A0080)
+# define CMM_WALL ((uint32_t)0x5D403780)
+# define CMM_FLOOR ((uint32_t)0x4CAF5080)
+# define CMM_PLAYER ((uint32_t)0xE5393580)
+# define CMM_DIR ((uint32_t)0xFFD00080)
 
 
-# define BLACK ((uint32_t)0x000000FF)
+// # define BLACK ((uint32_t)0x000000FF)
 // # define RED ((uint32_t)0xFF0000FF)
+// # define WHITE ((uint32_t)0xFFFFFFFF)
 // # define GREY ((uint32_t)0x808080FF)
 // # define YELLOW ((uint32_t)0xFFFF00FF)
 // # define WHITE ((uint32_t)0xFFFFFFFF)
