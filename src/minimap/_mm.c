@@ -123,15 +123,13 @@ void	paint_direction(t_game *game)
 {
 	// hier weitermachen
 	t_position2D	pos2D;
-	int	tile_size = game->minimap.tile_size;
-	int ox = game->minimap.off_x;
-	int oy = game->minimap.off_y;
+	t_position		pos;
 
 	pos2D.x = game->player.x + game->player.dir_x;
 	pos2D.y = game->player.y + game->player.dir_y;
-	mlx_put_pixel(game->img_minimap, pos2D.x * tile_size + ox, pos2D.y * tile_size + oy, WHITE);
-	mlx_put_pixel(game->img_minimap, 217, 157, WHITE);
-	printf("Direct - x: %f, y: %f\n", pos2D.x * tile_size + ox, pos2D.y * tile_size + oy);
+	pos.x = pos2D.x * game->minimap.tile_size + game->minimap.off_x;
+	pos.y = pos2D.y * game->minimap.tile_size + game->minimap.off_y;
+	mlx_put_pixel(game->img_minimap, pos.x, pos.y, WHITE);
 }
 
 

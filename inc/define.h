@@ -21,4 +21,7 @@
 # define GAME_SCREEN_WIDTH 1920
 # define GAME_SCREEN_HEIGTH 1080
 
+// MOVEMENT
+# define MV_ANGLE 0.05
+
 #endif

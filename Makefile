@@ -25,7 +25,8 @@ SOURCE_DIRS = 	src \
 				src/parsing \
 				src/exit \
 				src/minimap \
-				src/hooks
+				src/hooks \
+				src/movement
 
 VPATH = $(SOURCE_DIRS)
 
@@ -43,10 +44,14 @@ SOURCES +=	exit.c \
 
 # HOOKS
 SOURCES +=	key_hook.c \
-			resize_hook.c
+			resize_hook.c \
+			loop_hook.c
 
 # MINIMAP
 SOURCES +=	_mm.c
+
+# MOVEMENT
+SOURCES +=	turns.c
 
 
 # ---------- OBJECTS ---------- #

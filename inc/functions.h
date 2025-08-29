@@ -18,8 +18,13 @@ void	clean_game(t_game *game);
 // HOOKS
 void	key_hook(mlx_key_data_t keydata, void *param);
 void	resize_hook(int32_t width, int32_t height, void *param);
+void	loop_hook(void *param);
 
 // MINIMAP
 void	create_minimap(t_game *game);
+
+// MOVEMENT
+void	turn_left(t_game *game);
+void	turn_right(t_game *game);
 
 #endif
