@@ -61,8 +61,8 @@ static void	calculate_sizes(t_game *game)
 	int	used_h;
 
 	minimap = &game->minimap;
-	minimap->width = (uint32_t)game->mlx->width * 0.25;
-	minimap->height = (uint32_t)game->mlx->height * 0.25;
+	minimap->width = (uint32_t)game->mlx->width / MM_SIZE;
+	minimap->height = (uint32_t)game->mlx->height / MM_SIZE;
 	tile_w = minimap->width / game->map_max_width;
 	tile_h = minimap->height / game->map_max_height;
 	if (tile_w < tile_h)

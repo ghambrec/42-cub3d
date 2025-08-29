@@ -24,4 +24,7 @@
 // MOVEMENT
 # define MV_ANGLE 0.05
 
+// MINIMAP
+# define MM_SIZE 4
+
 #endif
