@@ -21,7 +21,12 @@ void	resize_hook(int32_t width, int32_t height, void *param);
 void	loop_hook(void *param);
 
 // MINIMAP
-void	create_minimap(t_game *game);
+void		create_minimap(t_game *game);
+void		paint_background(t_game *game);
+void		paint_minimap(t_game *game);
+void		paint_player(t_game *game);
+void		paint_direction(t_game *game);
+uint32_t	get_tile_color(char mapval);
 
 // MOVEMENT
 void	turn_left(t_game *game);

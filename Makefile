@@ -48,7 +48,12 @@ SOURCES +=	key_hook.c \
 			loop_hook.c
 
 # MINIMAP
-SOURCES +=	_mm.c
+SOURCES +=	create_minimap.c \
+			get_tile_color.c \
+			paint_background.c \
+			paint_direction.c \
+			paint_minimap.c \
+			paint_player.c
 
 # MOVEMENT
 SOURCES +=	turns.c

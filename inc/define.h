@@ -3,11 +3,11 @@
 
 # include <stdint.h>
 
-// COLORS
+// COLORS MINIMAP
 # define CMM_WALL ((uint32_t)0x5D403780)
 # define CMM_FLOOR ((uint32_t)0x4CAF5080)
 # define CMM_PLAYER ((uint32_t)0xE5393580)
-# define CMM_DIR ((uint32_t)0xFFD00080)
+# define CMM_DIR ((uint32_t)0xFFFFFFFF) //((uint32_t)0xFFD00080)
 
 // nur zum testen
 # define BLACK ((uint32_t)0x000000FF)
@@ -26,5 +26,6 @@
 
 // MINIMAP
 # define MM_SIZE 4
+# define MM_PLAYER_SIZE 4
 
 #endif
