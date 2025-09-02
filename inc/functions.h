@@ -27,6 +27,7 @@ void		paint_minimap(t_game *game);
 void		paint_player(t_game *game);
 void		paint_direction(t_game *game);
 uint32_t	get_tile_color(char mapval);
+void	put_pixel_safe(mlx_image_t *image, uint32_t x, uint32_t y, uint32_t color);
 
 // MOVEMENT
 void	turn_left(t_game *game);
@@ -35,8 +36,5 @@ void	walk_north(t_game *game);
 void	walk_west(t_game *game);
 void	walk_south(t_game *game);
 void	walk_east(t_game *game);
-
-// HELPER
-void	put_pixel_safe(mlx_image_t *image, uint32_t x, uint32_t y, uint32_t color);
 
 #endif
