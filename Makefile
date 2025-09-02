@@ -56,7 +56,8 @@ SOURCES +=	create_minimap.c \
 			paint_player.c
 
 # MOVEMENT
-SOURCES +=	turns.c
+SOURCES +=	turns.c \
+			walk.c
 
 
 # ---------- OBJECTS ---------- #

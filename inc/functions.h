@@ -31,5 +31,9 @@ uint32_t	get_tile_color(char mapval);
 // MOVEMENT
 void	turn_left(t_game *game);
 void	turn_right(t_game *game);
+void	walk_north(t_game *game);
+void	walk_west(t_game *game);
+void	walk_south(t_game *game);
+void	walk_east(t_game *game);
 
 #endif
