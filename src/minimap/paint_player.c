@@ -19,7 +19,7 @@ void	paint_player(t_game *game)
 		x = 0;
 		while (x < size)
 		{
-			mlx_put_pixel(game->img_minimap, pos.x - radius + x, pos.y - radius + y, CMM_PLAYER);
+			put_pixel_safe(game->img_minimap, pos.x - radius + x, pos.y - radius + y, CMM_PLAYER);
 			x++;
 		}
 		y++;

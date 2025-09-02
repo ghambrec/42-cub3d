@@ -12,7 +12,7 @@ void	paint_background(t_game *game)
 		j = 0;
 		while (j < game->minimap.width)
 		{
-			mlx_put_pixel(game->img_minimap, j, i, get_tile_color(MV_WALL));
+			put_pixel_safe(game->img_minimap, j, i, get_tile_color(MV_WALL));
 			j++;
 		}
 		i++;

@@ -10,5 +10,5 @@ void	paint_direction(t_game *game)
 	pos2D.y = game->player.pos.y + game->player.dir.y;
 	pos.x = pos2D.x * game->minimap.tile_size + game->minimap.off_x;
 	pos.y = pos2D.y * game->minimap.tile_size + game->minimap.off_y;
-	mlx_put_pixel(game->img_minimap, pos.x, pos.y, CMM_DIR);
+	put_pixel_safe(game->img_minimap, pos.x, pos.y, CMM_DIR);
 }

@@ -10,3 +10,9 @@ uint32_t	get_tile_color(char key)
 		return (CMM_FLOOR);
 	return (CMM_WALL);
 }
+
+void	put_pixel_safe(mlx_image_t *image, uint32_t x, uint32_t y, uint32_t color)
+{
+    if ((unsigned)x < image->width && (unsigned)y < image->height)
+		mlx_put_pixel(image, x, y, color);
+}

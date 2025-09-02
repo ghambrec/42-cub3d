@@ -14,7 +14,7 @@ static void	paint_tile(t_game *game, int mx, int my, char mapval)
 		ox = game->minimap.off_x + mx * game->minimap.tile_size;
 		while (x < game->minimap.tile_size)
 		{
-			mlx_put_pixel(game->img_minimap, ox, oy, get_tile_color(mapval));
+			put_pixel_safe(game->img_minimap, ox, oy, get_tile_color(mapval));
 			ox++;
 			x++;
 		}

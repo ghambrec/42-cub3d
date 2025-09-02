@@ -49,7 +49,7 @@ SOURCES +=	key_hook.c \
 
 # MINIMAP
 SOURCES +=	create_minimap.c \
-			get_tile_color.c \
+			helper.c \
 			paint_background.c \
 			paint_direction.c \
 			paint_minimap.c \

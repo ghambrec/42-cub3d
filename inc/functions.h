@@ -36,4 +36,7 @@ void	walk_west(t_game *game);
 void	walk_south(t_game *game);
 void	walk_east(t_game *game);
 
+// HELPER
+void	put_pixel_safe(mlx_image_t *image, uint32_t x, uint32_t y, uint32_t color);
+
 #endif
