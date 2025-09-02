@@ -9,8 +9,8 @@ void	paint_player(t_game *game)
 	int			x;
 	int			y;
 
-	pos.x = (game->player.x * game->minimap.tile_size) + game->minimap.off_x;
-	pos.y = (game->player.y * game->minimap.tile_size) + game->minimap.off_y;
+	pos.x = (game->player.pos.x * game->minimap.tile_size) + game->minimap.off_x;
+	pos.y = (game->player.pos.y * game->minimap.tile_size) + game->minimap.off_y;
 	size = game->minimap.tile_size / MM_PLAYER_SIZE;
 	radius = size / 2;
 	y = 0;

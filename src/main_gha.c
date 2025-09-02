@@ -25,11 +25,11 @@ int	main(void)
 	game.map_max_width = 10;
 	game.map_max_height = 6;
 	game.map = map;
-	game.player.x = 4.5;
-	game.player.y = 4.5;
-	// spieler schaut nach norden (oben)
-	game.player.dir_x = 0;
-	game.player.dir_y = -1;
+	game.player.pos.x = 4.5;
+	game.player.pos.y = 4.5;
+	// spieler schaut nach norden (oben) 
+	game.player.dir.x = 0;
+	game.player.dir.y = -1;
 
 
 	// create mlx window

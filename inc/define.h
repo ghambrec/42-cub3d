@@ -23,6 +23,7 @@
 
 // MOVEMENT
 # define MV_ANGLE 0.05
+# define MV_SPEED 0.05
 
 // MINIMAP
 # define MM_SIZE 4

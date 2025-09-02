@@ -28,10 +28,8 @@ typedef struct s_minimap
 
 typedef struct	s_player
 {
-	double		x;
-	double		y;
-	double		dir_x;
-	double		dir_y;
+	t_position2D	pos;
+	t_position2D	dir;
 } t_player;
 
 typedef struct s_game
