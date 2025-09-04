@@ -1,6 +1,6 @@
 #include "cub3d.h"
 
-// hier weitermachen mit walldetect
+// dont walk in a wall
 bool	able_to_walk(t_game *game, int x, int y)
 {
 	if (game->map[y][x] == '1')
