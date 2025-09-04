@@ -4,22 +4,22 @@
 #define HEIGHT 256
 
 
-// char *map[] = {
-//     "1111111111",
-//     "1000000111",
-//     "1001000111",
-//     "1001000111",
-//     "1000P00111",
-//     "1111111111",
-// 	NULL
-// };
-
 char *map[] = {
-    "11111111",
-    "10000P01",
-    "11111111",
+    "1111111111",
+    "1000000111",
+    "1001000111",
+    "1001000111",
+    "1000P00111",
+    "1111111111",
 	NULL
 };
+
+// char *map[] = {
+//     "11111111",
+//     "10000P01",
+//     "11111111",
+// 	NULL
+// };
 
 
 int	main(void)
@@ -27,17 +27,23 @@ int	main(void)
 	t_game game;
 	game.img_game = NULL;
 	game.img_minimap = NULL;
-	game.map_max_width = 10;
-	game.map_max_height = 6;
 	game.map = map;
-	// game.player.pos.x = 4.5;
-	// game.player.pos.y = 4.5;
-	game.player.pos.x = 5.5;
-	game.player.pos.y = 1.5;
 	// spieler schaut nach norden (oben) 
 	game.player.dir.x = 0;
 	game.player.dir.y = -1;
 
+
+	// big map
+	game.map_max_width = 10;
+	game.map_max_height = 6;
+	game.player.pos.x = 4.5;
+	game.player.pos.y = 4.5;
+
+	// small map
+	// game.map_max_width = 8;
+	// game.map_max_height = 3;
+	// game.player.pos.x = 4.5;
+	// game.player.pos.y = 1.5;
 
 	// create mlx window
 	game.mlx = mlx_init(GAME_SCREEN_WIDTH, GAME_SCREEN_HEIGTH, "cub3d", true);
