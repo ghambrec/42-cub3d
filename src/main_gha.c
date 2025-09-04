@@ -4,17 +4,22 @@
 #define HEIGHT 256
 
 
+// char *map[] = {
+//     "1111111111",
+//     "1000000111",
+//     "1001000111",
+//     "1001000111",
+//     "1000P00111",
+//     "1111111111",
+// 	NULL
+// };
+
 char *map[] = {
-    "1111111111",
-    "1000000111",
-    "1001000111",
-    "1001000111",
-    "1000P00111",
-    "1111111111",
+    "11111111",
+    "10000P01",
+    "11111111",
 	NULL
 };
-
-
 
 
 int	main(void)
@@ -25,8 +30,10 @@ int	main(void)
 	game.map_max_width = 10;
 	game.map_max_height = 6;
 	game.map = map;
-	game.player.pos.x = 4.5;
-	game.player.pos.y = 4.5;
+	// game.player.pos.x = 4.5;
+	// game.player.pos.y = 4.5;
+	game.player.pos.x = 5.5;
+	game.player.pos.y = 1.5;
 	// spieler schaut nach norden (oben) 
 	game.player.dir.x = 0;
 	game.player.dir.y = -1;
