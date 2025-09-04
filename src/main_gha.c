@@ -34,8 +34,8 @@ int	main(void)
 
 
 	// big map
-	game.map_max_width = 10;
-	game.map_max_height = 6;
+	game.minimap.max_width = 10;
+	game.minimap.max_height = 6;
 	game.player.pos.x = 4.5;
 	game.player.pos.y = 4.5;
 

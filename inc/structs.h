@@ -3,7 +3,16 @@
 
 #include "../lib/mlx/include/MLX42/MLX42.h"
 
-// player in minimap aiuf P setzen und blickrichtung in dem eigenen player struct speichern
+// player in **map auf 'P' setzen
+// position und blickrichtung des players in t_player speichern
+// position = **map position + 0.5 (x und y)
+// maximalste breite und hoehe der minimap speichern in t_minimap.max_...
+
+// blickrichtungen:
+// north: x=0, y=-1
+// east:  x=1, y=0
+// south: x=0, y=1
+// west:  x=-1, y=0
 
 typedef struct s_position2D
 {
@@ -24,6 +33,8 @@ typedef struct s_minimap
 	int			tile_size;
 	int			off_x;
 	int			off_y;
+	int			max_width;
+	int			max_height;
 } t_minimap;
 
 typedef struct	s_player
@@ -38,8 +49,6 @@ typedef struct s_game
 	mlx_image_t		*img_game;
 	mlx_image_t		*img_minimap;
 	char			**map;
-	int				map_max_width;
-	int				map_max_height;
 	t_minimap		minimap;
 	t_player		player;
 } t_game;
