@@ -43,21 +43,23 @@ typedef struct	s_player
 	t_position2D	dir;
 } t_player;
 
+typedef struct s_map_info
+{
+	char	*map_name;
+	char	*map_string;	
+	char	**map2d;
+	char	**map2d_copy;
+} t_map_info;
+
 typedef struct s_game
 {
 	mlx_t			*mlx;
 	mlx_image_t		*img_game;
 	mlx_image_t		*img_minimap;
-	char			**map;
 	t_minimap		minimap;
 	t_player		player;
+	t_map_info		map;
 } t_game;
-
-typedef struct s_map_info
-{
-	char	*map_name;
-	char	*map_string;	
-} t_map_info;
 
 typedef struct s_size
 {

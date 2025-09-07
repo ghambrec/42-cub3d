@@ -3,7 +3,7 @@
 // dont walk in a wall
 bool	able_to_walk(t_game *game, int x, int y)
 {
-	if (game->map[y][x] == '1')
+	if (game->map.map2d[y][x] == '1')
 		return (false);
 	return (true);
 }

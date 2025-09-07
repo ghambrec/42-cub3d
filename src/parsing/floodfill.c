@@ -29,7 +29,7 @@ int	floodfill_validation(t_game *game)
 	size_t		i;
 	int		y;
 
-	flood_fill(game->player.x, game->player.y, game);
+	flood_fill(game->player.pos.x, game->player.pos.y, game);
 	i = 0;
 	y = 0;
 	while (game->map.map2d_copy[y] != NULL)

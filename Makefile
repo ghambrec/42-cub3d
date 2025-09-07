@@ -11,6 +11,17 @@ CC := cc
 INCLUDE_DIR := ./inc
 CFLAGS = -Wall -Wextra -Werror -I $(INCLUDE_DIR) -g
 
+# Prefer pkg-config for glfw (fallback to Homebrew). Add GLFW cflags to CFLAGS when available.
+PKG_CONFIG := $(shell command -v pkg-config 2>/dev/null)
+GLFW_PKG_CFLAGS := $(shell pkg-config --cflags glfw3 2>/dev/null)
+GLFW_PKG_LIBS := $(shell pkg-config --libs glfw3 2>/dev/null)
+HOMEBREW_PREFIX := $(shell brew --prefix 2>/dev/null || echo /opt/homebrew)
+GLFW_FALLBACK_LIBS := -L$(HOMEBREW_PREFIX)/lib -lglfw
+GLFW_LIBS := $(if $(GLFW_PKG_LIBS),$(GLFW_PKG_LIBS),$(GLFW_FALLBACK_LIBS))
+ifneq ($(GLFW_PKG_CFLAGS),)
+CFLAGS += $(GLFW_PKG_CFLAGS)
+endif
+
 # ---------- LIB ---------- #
 LIB_DIR = ./lib
 LIBFT_DIR = $(LIB_DIR)/myLibft
@@ -18,7 +29,8 @@ LIBFT_NAME = libft.a
 LIBFT_FULL = $(LIBFT_DIR)/$(LIBFT_NAME)
 MLX_DIR = $(LIB_DIR)/mlx
 MLX_NAME = $(MLX_DIR)/build/libmlx42.a
-MLX_FULL = $(MLX_NAME) -ldl -lglfw -pthread -lm
+# macOS: remove -ldl and resolve glfw via pkg-config or Homebrew
+MLX_FULL = $(MLX_NAME) $(GLFW_LIBS) -pthread -lm
 
 # ---------- SOURCES ---------- #
 SOURCE_DIRS = 	src \

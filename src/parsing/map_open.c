@@ -26,9 +26,9 @@ void	get_player_pos(t_game *game)
 			if (game->map.map2d[y][i] == 'N' || game->map.map2d[y][i] == 'E'
 				|| game->map.map2d[y][i] == 'S' || game->map.map2d[y][i] == 'W')
 			{
-				game->player.x = i;
-				game->player.y = y;
-				printf("x: %f, y: %f\n", game->player.x, game->player.y);
+				game->player.pos.x = i;
+				game->player.pos.y = y;
+				printf("x: %f, y: %f\n", game->player.pos.x, game->player.pos.y);
 				return ;
 			}
 			i++;

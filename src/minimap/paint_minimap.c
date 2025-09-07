@@ -29,12 +29,12 @@ void paint_minimap(t_game *game)
 	int	mx;
 
 	my = 0;
-	while (game->map[my])
+	while (game->map.map2d[my])
 	{
 		mx = 0;
-		while (game->map[my][mx])
+		while (game->map.map2d[my][mx])
 		{
-			paint_tile(game, mx, my, game->map[my][mx]);
+			paint_tile(game, mx, my, game->map.map2d[my][mx]);
 			mx++;
 		}
 		my++;
