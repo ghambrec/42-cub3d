@@ -49,6 +49,8 @@ typedef struct s_map_info
 	char	*map_string;	
 	char	**map2d;
 	char	**map2d_copy;
+	int		width;
+	int		height;
 } t_map_info;
 
 typedef struct s_game

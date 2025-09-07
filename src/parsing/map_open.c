@@ -21,6 +21,7 @@ void	get_player_pos(t_game *game)
 	y = 0;
 	while (game->map.map2d[y])
 	{
+		i = 0;
 		while (i < ft_strlen(game->map.map2d[y]))
 		{
 			if (game->map.map2d[y][i] == 'N' || game->map.map2d[y][i] == 'E'
@@ -28,7 +29,6 @@ void	get_player_pos(t_game *game)
 			{
 				game->player.pos.x = i;
 				game->player.pos.y = y;
-				printf("x: %f, y: %f\n", game->player.pos.x, game->player.pos.y);
 				return ;
 			}
 			i++;
@@ -64,4 +64,21 @@ void	map_open(t_map_info *map_info)
 		free(temp);
 	}
 	close(fd);
+	return ;
+}
+
+void	get_map_width_height(t_game *game)
+{
+	int y = 0;
+	int max_width = 0;
+
+	while (game->map.map2d[y])
+	{
+		int len = ft_strlen(game->map.map2d[y]);
+		if (len > max_width)
+			max_width = len;
+		y++;
+	}
+	game->map.width = max_width;
+	game->map.height = y;
 }

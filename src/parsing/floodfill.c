@@ -14,6 +14,12 @@
 
 static int	flood_fill(int x, int y, t_game *game)
 {
+	if (x < 0 || y < 0 || x >= game->map.width || y >= game->map.height)
+	{
+		ft_putstr_fd("Map is invalid! Not closed/surrounded by walls\n", 2);
+		clean_game(game);
+		exit(EXIT_FAILURE);
+	}
 	if (game->map.map2d_copy[y][x] == '1')
 		return (0);
 	game->map.map2d_copy[y][x] = '1';
@@ -27,7 +33,7 @@ static int	flood_fill(int x, int y, t_game *game)
 int	floodfill_validation(t_game *game)
 {
 	size_t		i;
-	int		y;
+	int			y;
 
 	flood_fill(game->player.pos.x, game->player.pos.y, game);
 	i = 0;
@@ -36,12 +42,14 @@ int	floodfill_validation(t_game *game)
 	{
 		while (i < ft_strlen(game->map.map2d_copy[y]))
 		{
-			if (game->map.map2d_copy[y][i] == 0)
+			if (game->map.map2d_copy[y][i] == '0')
 				flood_fill(y, i, game);
 			i++;
 			}
 		y++;
 	}
+	printf("Map 2D Copy after Floodfill:\n");
+	ft_print2d(game->map.map2d_copy);
 	ft_str2d_free(game->map.map2d_copy);
 	return (1);
 }

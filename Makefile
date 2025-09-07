@@ -38,11 +38,15 @@ SOURCE_DIRS = 	src \
 				src/exit \
 				src/minimap \
 				src/hooks \
-				src/movement
+				src/movement \
+				src/helper
 
 VPATH = $(SOURCE_DIRS)
 
 SOURCES = main_rob.c
+
+# HELPERS
+SOURCES +=	helpers.c 
 
 # PARSING
 SOURCES += 	check_args.c \

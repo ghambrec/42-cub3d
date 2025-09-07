@@ -16,7 +16,7 @@ void	arg_validation(char **argv, int n)
 {
 	if (n != 2)
 	{
-		ft_putstr_fd("Error! Only one argument is allowed\n", 2);
+		ft_putstr_fd("Error! You need one and only one argument!\n", 2);
 		exit(EXIT_FAILURE);
 	}
 	if (ft_strncmp(argv[1] + ft_strlen(argv[1]) - 4, ".cub", 4) != 0)

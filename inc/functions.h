@@ -4,6 +4,9 @@
 # include "../lib/myLibft/include/my_libft.h"
 # include "structs.h"
 
+// HELPER
+void	ft_print2d(char **str2d);
+
 // PARSING
 void	game_init(t_game *game);
 void	arg_validation(char **argv, int n);
@@ -13,6 +16,7 @@ void	map_open(t_map_info *map_info);
 int		floodfill_validation(t_game *game);
 void	create_map(t_game *game);
 void	get_player_pos(t_game *game);
+void	get_map_width_height(t_game *game);
 
 // EXIT
 void	exit_success(t_game *game);
@@ -40,5 +44,6 @@ void	walk_north(t_game *game);
 void	walk_west(t_game *game);
 void	walk_south(t_game *game);
 void	walk_east(t_game *game);
+
 
 #endif

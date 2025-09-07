@@ -17,6 +17,10 @@ void	map_validation(t_game *game)
 	map_open(&game->map);
 	char_validation(game->map.map_string);
 	create_map(game);
+	get_map_width_height(game);
 	get_player_pos(game);
+	printf("Player Position: x=%f, y=%f\n", game->player.pos.x, game->player.pos.y);
 	floodfill_validation(game);
+	printf("Map validation successful\n");
+	return ;
 }
