@@ -5,7 +5,7 @@ typedef enum e_map_values
 {
 	MV_WALL = '1',
 	MV_FLOOR = '0',
-	MV_PLAYER_NORTH = 'P'
+	MV_PLAYER = 'P'
 }	t_map_values;
 
 #endif

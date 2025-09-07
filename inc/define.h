@@ -3,18 +3,30 @@
 
 # include <stdint.h>
 
-// COLORS
+// COLORS MINIMAP
+# define CMM_WALL ((uint32_t)0x5D403780)
+# define CMM_FLOOR ((uint32_t)0x4CAF5080)
+# define CMM_PLAYER ((uint32_t)0xE5393580)
+# define CMM_DIR ((uint32_t)0xFFFFFFFF) //((uint32_t)0xFFD00080)
+
+// nur zum testen
 # define BLACK ((uint32_t)0x000000FF)
 # define RED ((uint32_t)0xFF0000FF)
+# define WHITE ((uint32_t)0xFFFFFFFF)
 # define GREY ((uint32_t)0x808080FF)
+# define YELLOW ((uint32_t)0xFFFF00FF)
+# define WHITE ((uint32_t)0xFFFFFFFF)
 
 // GAME
 # define GAME_SCREEN_WIDTH 1920
 # define GAME_SCREEN_HEIGTH 1080
 
+// MOVEMENT
+# define MV_ANGLE 0.05
+# define MV_SPEED 0.05
+
 // MINIMAP
-# define MM_MIN_SIZE 512
-# define MM_TILE 32
-# define MM_PLAYER_SIZE 8
+# define MM_SIZE 4
+# define MM_PLAYER_SIZE 4
 
 #endif

@@ -5,5 +5,6 @@
 # include "enums.h"
 # include "functions.h"
 # include "structs.h"
+# include <math.h>
 
 #endif

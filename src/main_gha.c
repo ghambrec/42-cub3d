@@ -5,43 +5,45 @@
 
 
 char *map[] = {
-    "11111111",
-    "10000001",
-    "10010001",
-    "10010001",
-    "10000001",
-    "1000P001",
-    "10000001",
-    "11111111",
+    "1111111111",
+    "1000000111",
+    "1001000111",
+    "1001000111",
+    "1000P00111",
+    "1111111111",
 	NULL
 };
 
-// malt bei den aktuellen coords ein feld mit TILExTILE size
-void	paint_tile(mlx_image_t *img, int mx, int my, uint32_t color)
-{
-	int x = 0;
-	int y = 0;
-	int ox;
-	int oy = my * MM_TILE;
+// char *map[] = {
+//     "11111111",
+//     "10000P01",
+//     "11111111",
+// 	NULL
+// };
 
-	while (y < MM_TILE)
-	{
-		x = 0;
-		ox = mx * MM_TILE;
-		while (x < MM_TILE)
-		{
-			mlx_put_pixel(img, ox, oy, color);
-			ox++;
-			x++;
-		}
-		oy++;
-		y++;
-	}
-}
 
 int	main(void)
 {
 	t_game game;
+	game.img_game = NULL;
+	game.img_minimap = NULL;
+	game.map = map;
+	// spieler schaut nach norden (oben) 
+	game.player.dir.x = 0;
+	game.player.dir.y = -1;
+
+
+	// big map
+	game.minimap.max_width = 10;
+	game.minimap.max_height = 6;
+	game.player.pos.x = 4.5;
+	game.player.pos.y = 4.5;
+
+	// small map
+	// game.map_max_width = 8;
+	// game.map_max_height = 3;
+	// game.player.pos.x = 4.5;
+	// game.player.pos.y = 1.5;
 
 	// create mlx window
 	game.mlx = mlx_init(GAME_SCREEN_WIDTH, GAME_SCREEN_HEIGTH, "cub3d", true);
@@ -55,37 +57,18 @@ int	main(void)
 	if (mlx_image_to_window(game.mlx, game.img_game, 0, 0) < 0)
 		exit_failure(&game, "failed to load game image to window (mlx_image_to_window)");
 
-	// create image for minimap and calculate how big it has to be
-	t_size size;
-	size.width = game.mlx->width * 0.25;
-	size.height = game.mlx->height * 0.25;
-	// mlx_put_pixel(game.img_minimap, size.width-1, size.height-1, RED);
-	game.img_minimap = mlx_new_image(game.mlx, size.width, size.height);
-	if (!game.img_minimap)
-		exit_failure(&game, "failed to create the minimap window (mlx_new_image)");
-	if (mlx_image_to_window(game.mlx, game.img_minimap, 0, 0) < 0)
-		exit_failure(&game, "failed to load minimap image to window (mlx_image_to_window)");
+
+	create_minimap(&game);
+	
 
 
-	int my = 0;
-	int mx = 0;
-	while (map[my])
-	{
-		mx = 0;
-		while (map[my][mx])
-		{
-			if (map[my][mx] == MV_WALL)
-				paint_tile(game.img_minimap, mx, my, RED);
-			if (map[my][mx] == MV_FLOOR || map[my][mx] == MV_PLAYER_NORTH)
-				paint_tile(game.img_minimap, mx, my, GREY);
-			mx++;
-		}
-		my++;
-	}
+
 
 		
 
-	
+	mlx_key_hook(game.mlx, &key_hook, &game);
+	mlx_resize_hook(game.mlx, &resize_hook, &game);
+	mlx_loop_hook(game.mlx, &loop_hook, &game);
 	mlx_loop(game.mlx);
 	mlx_terminate(game.mlx);
 	return (EXIT_SUCCESS);
