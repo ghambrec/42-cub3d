@@ -33,12 +33,11 @@ typedef struct s_minimap
 	int			tile_size;
 	int			off_x;
 	int			off_y;
-	int			max_width;
-	int			max_height;
 } t_minimap;
 
 typedef struct	s_player
 {
+	t_position		pos1D;
 	t_position2D	pos;
 	t_position2D	dir;
 } t_player;
@@ -49,8 +48,8 @@ typedef struct s_map_info
 	char	*map_string;	
 	char	**map2d;
 	char	**map2d_copy;
-	int		width;
-	int		height;
+	int		max_width;
+	int		max_height;
 } t_map_info;
 
 typedef struct s_game

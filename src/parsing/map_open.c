@@ -3,40 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   map_open.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ghambrec <ghambrec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 16:12:43 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/08/27 17:45:14 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/09/08 13:52:53 by ghambrec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-void	get_player_pos(t_game *game)
-{
-	size_t	i;
-	int		y;
-
-	i = 0;
-	y = 0;
-	while (game->map.map2d[y])
-	{
-		i = 0;
-		while (i < ft_strlen(game->map.map2d[y]))
-		{
-			if (game->map.map2d[y][i] == 'N' || game->map.map2d[y][i] == 'E'
-				|| game->map.map2d[y][i] == 'S' || game->map.map2d[y][i] == 'W')
-			{
-				game->player.pos.x = i;
-				game->player.pos.y = y;
-				return ;
-			}
-			i++;
-		}
-		y++;
-	}
-	return ;
-}
 
 void	create_map(t_game *game)
 {
@@ -69,16 +43,19 @@ void	map_open(t_map_info *map_info)
 
 void	get_map_width_height(t_game *game)
 {
-	int y = 0;
-	int max_width = 0;
+	int len_y;
+	int	len_x;
+	int max_width;
 
-	while (game->map.map2d[y])
+	len_y = 0;
+	max_width = 0;
+	while (game->map.map2d[len_y])
 	{
-		int len = ft_strlen(game->map.map2d[y]);
-		if (len > max_width)
-			max_width = len;
-		y++;
+		len_x = ft_strlen(game->map.map2d[len_y]);
+		if (len_x > max_width)
+			max_width = len_x;
+		len_y++;
 	}
-	game->map.width = max_width;
-	game->map.height = y;
+	game->map.max_width = max_width;
+	game->map.max_height = len_y;
 }

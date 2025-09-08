@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   floodfill.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ghambrec <ghambrec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 16:13:19 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/08/27 17:33:11 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/09/08 13:50:26 by ghambrec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	flood_fill(int x, int y, t_game *game)
 {
-	if (x < 0 || y < 0 || x >= game->map.width || y >= game->map.height)
+	if (x < 0 || y < 0 || x >= game->map.max_width || y >= game->map.max_height)
 	{
 		ft_putstr_fd("Map is invalid! Not closed/surrounded by walls\n", 2);
 		clean_game(game);
@@ -35,7 +35,7 @@ int	floodfill_validation(t_game *game)
 	size_t		i;
 	int			y;
 
-	flood_fill(game->player.pos.x, game->player.pos.y, game);
+	flood_fill(game->player.pos1D.x, game->player.pos1D.y, game);
 	i = 0;
 	y = 0;
 	while (game->map.map2d_copy[y] != NULL)

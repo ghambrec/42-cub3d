@@ -22,28 +22,15 @@ char *map[] = {
 // };
 
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	t_game game;
-	game.img_game = NULL;
-	game.img_minimap = NULL;
-	game.map = map;
-	// spieler schaut nach norden (oben) 
-	game.player.dir.x = 0;
-	game.player.dir.y = -1;
 
-
-	// big map
-	game.minimap.max_width = 10;
-	game.minimap.max_height = 6;
-	game.player.pos.x = 4.5;
-	game.player.pos.y = 4.5;
-
-	// small map
-	// game.map_max_width = 8;
-	// game.map_max_height = 3;
-	// game.player.pos.x = 4.5;
-	// game.player.pos.y = 1.5;
+	game_init(&game);
+	arg_validation(argv, argc);
+	game.map.map_name = argv[1];
+	map_validation(&game);
+	free(game.map.map_string);
 
 	// create mlx window
 	game.mlx = mlx_init(GAME_SCREEN_WIDTH, GAME_SCREEN_HEIGTH, "cub3d", true);
@@ -56,7 +43,6 @@ int	main(void)
 		exit_failure(&game, "failed to create the game window (mlx_new_image)");
 	if (mlx_image_to_window(game.mlx, game.img_game, 0, 0) < 0)
 		exit_failure(&game, "failed to load game image to window (mlx_image_to_window)");
-
 
 	create_minimap(&game);
 	

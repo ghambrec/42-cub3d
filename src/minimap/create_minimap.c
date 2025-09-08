@@ -12,14 +12,14 @@ static void	calculate_sizes(t_game *game)
 	minimap = &game->minimap;
 	minimap->width = (uint32_t)game->mlx->width / MM_SIZE;
 	minimap->height = (uint32_t)game->mlx->height / MM_SIZE;
-	tile_w = minimap->width / game->minimap.max_width;
-	tile_h = minimap->height / game->minimap.max_height;
+	tile_w = minimap->width / game->map.max_width;
+	tile_h = minimap->height / game->map.max_height;
 	if (tile_w < tile_h)
 		minimap->tile_size = tile_w;
 	else
 		minimap->tile_size = tile_h;
-	used_w = minimap->tile_size * game->minimap.max_width;
-	used_h = minimap->tile_size * game->minimap.max_height;
+	used_w = minimap->tile_size * game->map.max_width;
+	used_h = minimap->tile_size * game->map.max_height;
 	minimap->off_x = (minimap->width - used_w) / 2;
 	minimap->off_y = (minimap->height - used_h) / 2;
 }

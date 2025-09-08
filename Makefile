@@ -39,14 +39,18 @@ SOURCE_DIRS = 	src \
 				src/minimap \
 				src/hooks \
 				src/movement \
-				src/helper
+				src/helper \
+				src/init
 
 VPATH = $(SOURCE_DIRS)
 
-SOURCES = main_rob.c
+SOURCES = main_gha.c
 
 # HELPERS
-SOURCES +=	helpers.c 
+SOURCES +=	helpers.c
+
+# INIT
+SOURCES +=	game_init.c
 
 # PARSING
 SOURCES += 	check_args.c \
@@ -54,7 +58,7 @@ SOURCES += 	check_args.c \
 			map_validation.c \
 			map_open.c \
 			floodfill.c \
-			game_init.c
+			player_position.c
 
 # EXIT
 SOURCES +=	exit.c \
