@@ -22,7 +22,7 @@
 # define GAME_SCREEN_HEIGTH 1080
 
 // MOVEMENT
-# define MV_ANGLE 0.1
+# define MV_ANGLE 0.075
 # define MV_SPEED 0.05
 
 // MINIMAP
