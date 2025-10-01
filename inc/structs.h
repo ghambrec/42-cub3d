@@ -14,11 +14,11 @@
 // south: x=0, y=1
 // west:  x=-1, y=0
 
-typedef struct s_position2D
+typedef struct s_vector
 {
 	double x;
 	double y;
-} t_position2D;
+} t_vector;
 
 typedef struct s_position
 {
@@ -38,8 +38,9 @@ typedef struct s_minimap
 typedef struct	s_player
 {
 	t_position		pos1D;
-	t_position2D	pos;
-	t_position2D	dir;
+	t_vector	pos;
+	t_vector	dir;
+	t_vector	plane;
 } t_player;
 
 typedef struct s_map_info
