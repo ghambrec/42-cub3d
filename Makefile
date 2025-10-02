@@ -40,7 +40,8 @@ SOURCE_DIRS = 	src \
 				src/hooks \
 				src/movement \
 				src/helper \
-				src/init
+				src/init \
+				src/raycasting
 
 VPATH = $(SOURCE_DIRS)
 
@@ -81,6 +82,8 @@ SOURCES +=	create_minimap.c \
 SOURCES +=	turns.c \
 			walk.c
 
+# RAYS
+SOURCES +=	rays.c
 
 # ---------- OBJECTS ---------- #
 OBJECT_DIR = obj

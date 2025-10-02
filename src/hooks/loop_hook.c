@@ -18,4 +18,5 @@ void	loop_hook(void *param)
 	if (mlx_is_key_down(game->mlx, MLX_KEY_D))
 		walk_east(game);
 	create_minimap(game);
+	raycasting(game);
 }

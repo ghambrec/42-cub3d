@@ -45,5 +45,8 @@ void	walk_west(t_game *game);
 void	walk_south(t_game *game);
 void	walk_east(t_game *game);
 
+// RAYCASTING
+void	raycasting(t_game *game);
+
 
 #endif

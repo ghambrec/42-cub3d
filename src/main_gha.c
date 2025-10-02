@@ -32,6 +32,9 @@ int	main(int argc, char **argv)
 	map_validation(&game);
 	free(game.map.map_string);
 
+	// print map
+	ft_print2d(game.map.map2d);
+
 	// create mlx window
 	game.mlx = mlx_init(GAME_SCREEN_WIDTH, GAME_SCREEN_HEIGTH, "cub3d", true);
 	if (!game.mlx)
@@ -45,6 +48,7 @@ int	main(int argc, char **argv)
 		exit_failure(&game, "failed to load game image to window (mlx_image_to_window)");
 
 	create_minimap(&game);
+	raycasting(&game);
 	
 
 

@@ -37,7 +37,7 @@ typedef struct s_minimap
 
 typedef struct	s_player
 {
-	t_position		pos1D;
+	t_position	pos1D;
 	t_vector	pos;
 	t_vector	dir;
 	t_vector	plane;
