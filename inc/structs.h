@@ -69,5 +69,11 @@ typedef struct s_size
 	uint32_t	height;
 } t_size;
 
+// typedef struct s_ray
+// {
+// 	t_vector	ray_dir;
+// 	double		perp_wall_dist;
+// } t_ray;
+
 
 #endif

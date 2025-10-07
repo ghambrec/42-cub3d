@@ -47,6 +47,8 @@ void	walk_east(t_game *game);
 
 // RAYCASTING
 void	raycasting(t_game *game);
+void	draw_minimap_rays(t_game *game, int i, t_vector ray_dir, double perp_wall_dist);
+void	draw_minimap_rays_old(mlx_image_t *img, int x0, int y0, int x1, int y1, uint32_t color);
 
 
 #endif

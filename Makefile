@@ -82,8 +82,9 @@ SOURCES +=	create_minimap.c \
 SOURCES +=	turns.c \
 			walk.c
 
-# RAYS
-SOURCES +=	rays.c
+# RAYCASTING
+SOURCES +=	rays.c \
+			minimap_rays.c
 
 # ---------- OBJECTS ---------- #
 OBJECT_DIR = obj
