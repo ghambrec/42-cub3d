@@ -32,6 +32,7 @@ void	clean_game(t_game *game);
 void	key_hook(mlx_key_data_t keydata, void *param);
 void	resize_hook(int32_t width, int32_t height, void *param);
 void	loop_hook(void *param);
+void	handle_resize(t_game *game);
 
 // MINIMAP
 void		create_minimap(t_game *game);
