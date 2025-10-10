@@ -9,7 +9,9 @@ NC = \033[0m
 NAME := cub3d
 CC := cc
 INCLUDE_DIR := ./inc
-CFLAGS = -Wall -Wextra -Werror -I $(INCLUDE_DIR) -g
+CFLAGS = -Wall -Wextra -Werror -I $(INCLUDE_DIR) -g -O3 -MMD
+# MMD -> Automatische Rebuilds bei Header-Änderung (.d Dateien im obj folder)
+# O3 -> Maximale Compiler-Optimierung
 
 # Prefer pkg-config for glfw (fallback to Homebrew). Add GLFW cflags to CFLAGS when available.
 PKG_CONFIG := $(shell command -v pkg-config 2>/dev/null)
@@ -45,13 +47,16 @@ SOURCE_DIRS = 	src \
 
 VPATH = $(SOURCE_DIRS)
 
-SOURCES = main_gha.c
+SOURCES = main.c
 
 # HELPERS
-SOURCES +=	helpers.c
+SOURCES +=	helpers.c \
+			render_game.c
 
 # INIT
-SOURCES +=	game_init.c
+SOURCES +=	init_game.c \
+			init_mlx.c \
+			init_hooks.c
 
 # PARSING
 SOURCES += 	check_args.c \

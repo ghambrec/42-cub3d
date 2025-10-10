@@ -2,7 +2,7 @@
 
 static void draw_stripe(mlx_image_t *img, int x, int y0, int y1, uint32_t color)
 {
-    if ((unsigned)x >= img->width) return;
+    // if ((unsigned)x >= img->width) return;
     if (y0 < 0) y0 = 0;
     if (y1 >= (int)img->height) y1 = (int)img->height - 1;
 
@@ -132,7 +132,6 @@ void	raycasting(t_game *game)
 
 
 		draw_minimap_rays(game, x, ray_dir, perp_wall_dist);
-
 
 		// berechne hoehe der line
 		int lineHeight = (int)(GAME_SCREEN_HEIGTH / perp_wall_dist);

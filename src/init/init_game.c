@@ -1,6 +1,6 @@
 #include "cub3d.h"
 
-void	game_init(t_game *game)
+void	init_game(t_game *game)
 {
 	game->map.map2d = NULL;
 	game->map.map2d_copy = NULL;

@@ -10,7 +10,7 @@
 # define CMM_DIR ((uint32_t)0xFFD00080) // nicht benoetigt?
 # define CMM_RAYS ((uint32_t)0xEAF52580)
 # define MM_SIZE 4
-# define MM_PLAYER_SIZE 4
+# define MM_PLAYER_SIZE 3
 
 // nur zum testen
 # define BLACK ((uint32_t)0x000000FF)

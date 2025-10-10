@@ -28,14 +28,16 @@ static void	calculate_sizes(t_game *game)
 void	create_minimap(t_game *game)
 {
 	calculate_sizes(game);
-	mlx_delete_image(game->mlx, game->img_minimap);
-	game->img_minimap = mlx_new_image(game->mlx, game->minimap.width, game->minimap.height);
 	if (!game->img_minimap)
-		exit_failure(game, "failed to create minimap image (mlx_new_image)");
-	if (mlx_image_to_window(game->mlx, game->img_minimap, 0, 0) < 0)
-		exit_failure(game, "failed to load minimap image to window (mlx_image_to_window)");
+	{
+		game->img_minimap = mlx_new_image(game->mlx, game->minimap.width, game->minimap.height);
+		if (!game->img_minimap)
+			exit_failure(game, "failed to create minimap image (mlx_new_image)");
+		if (mlx_image_to_window(game->mlx, game->img_minimap, 0, 0) < 0)
+			exit_failure(game, "failed to load minimap image to window (mlx_image_to_window)");
+	}
 	paint_background(game);
 	paint_minimap(game);
 	paint_player(game);
-	paint_direction(game);
+	// paint_direction(game);
 }

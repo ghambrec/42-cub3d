@@ -6,9 +6,14 @@
 
 // HELPER
 void	ft_print2d(char **str2d);
+void	render_game(t_game *game);
+
+// INIT
+void	init_game(t_game *game);
+void	init_mlx(t_game *game);
+void	init_hooks(t_game *game);
 
 // PARSING
-void	game_init(t_game *game);
 void	arg_validation(char **argv, int n);
 void	map_validation(t_game *game);
 void	char_validation(char *map);
@@ -35,7 +40,7 @@ void		paint_minimap(t_game *game);
 void		paint_player(t_game *game);
 void		paint_direction(t_game *game);
 uint32_t	get_tile_color(char mapval);
-void	put_pixel_safe(mlx_image_t *image, uint32_t x, uint32_t y, uint32_t color);
+void		put_pixel_safe(mlx_image_t *image, uint32_t x, uint32_t y, uint32_t color);
 
 // MOVEMENT
 void	turn_left(t_game *game);
@@ -48,7 +53,7 @@ void	walk_east(t_game *game);
 // RAYCASTING
 void	raycasting(t_game *game);
 void	draw_minimap_rays(t_game *game, int i, t_vector ray_dir, double perp_wall_dist);
-void	draw_minimap_rays_old(mlx_image_t *img, int x0, int y0, int x1, int y1, uint32_t color);
+
 
 
 #endif
