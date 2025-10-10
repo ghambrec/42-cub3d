@@ -14,31 +14,6 @@ static void draw_stripe(mlx_image_t *img, int x, int y0, int y1, uint32_t color)
 }
 
 
-// HEIGTH durch 2, obere haelfte ceil untere floor
-void	fill_ceil_floor(t_game *game)
-{
-	uint32_t x;
-	uint32_t y;
-	uint32_t color;
-
-	y = 0;
-	while (y < GAME_SCREEN_HEIGTH)
-	{
-		if (y >= GAME_SCREEN_HEIGTH / 2)
-			color = FLOOR;
-		else
-			color = CEIL;
-		x = 0;
-		while (x < GAME_SCREEN_WIDTH)
-		{
-			mlx_put_pixel(game->img_game, x, y, color);
-			x++;
-		}
-		y++;
-	}
-}
-
-
 void	raycasting(t_game *game)
 {
 	double 		camera_x;
@@ -53,7 +28,6 @@ void	raycasting(t_game *game)
 	int			side;
 	t_position	map_box;
 
-	fill_ceil_floor(game);
 
 	x = 0;
 	// pro Bildschirmspalte (x)
