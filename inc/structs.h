@@ -53,6 +53,20 @@ typedef struct s_map_info
 	int		max_height;
 } t_map_info;
 
+typedef struct s_size
+{
+	uint32_t	width;
+	uint32_t	height;
+} t_size;
+
+typedef struct s_textures_path
+{
+	char	*north;
+	char	*east;
+	char	*south;
+	char	*west;
+} t_textures_path;
+
 typedef struct s_game
 {
 	mlx_t			*mlx;
@@ -61,13 +75,9 @@ typedef struct s_game
 	t_minimap		minimap;
 	t_player		player;
 	t_map_info		map;
+	t_textures_path	texture_path;
+	mlx_texture_t	*textures[4];
 } t_game;
-
-typedef struct s_size
-{
-	uint32_t	width;
-	uint32_t	height;
-} t_size;
 
 // typedef struct s_ray
 // {

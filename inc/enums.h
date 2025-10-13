@@ -8,4 +8,12 @@ typedef enum e_map_values
 	MV_PLAYER = 'P'
 }	t_map_values;
 
+typedef enum e_textures_keys
+{
+	T_NORTH,
+	T_EAST,
+	T_SOUTH,
+	T_WEST
+}	t_textures_keys;
+
 #endif
