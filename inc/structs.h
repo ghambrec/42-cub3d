@@ -79,11 +79,17 @@ typedef struct s_game
 	mlx_texture_t	*textures[4];
 } t_game;
 
-// typedef struct s_ray
-// {
-// 	t_vector	ray_dir;
-// 	double		perp_wall_dist;
-// } t_ray;
+typedef struct s_ray
+{
+	t_vector	ray_dir;
+	// double		perp_wall_dist;
+	int			side;
+	double		texture_x;
+	int			texture_key;
+	int			line_height;
+	int			draw_start;
+	int			draw_end;
+} t_ray;
 
 
 #endif
