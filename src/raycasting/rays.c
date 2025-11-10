@@ -98,14 +98,55 @@ void	raycasting(t_game *game)
 			}
 		}
 
+
+
+
+
 		// calc perpenducular distance from the camera plaen to hitted wall
 		if (side == 0)
 			perp_wall_dist = side_dist.x - delta_dist.x;
 		else
 			perp_wall_dist = side_dist.y - delta_dist.y;
 
-
 		draw_minimap_rays(game, x, ray_dir, perp_wall_dist);
+
+
+
+
+
+		// X-Treffpunkt im texture auf das der ray geht (zwischen 0-1)
+		double wall_x;
+		if (side == 0)
+			wall_x = pos.y + perp_wall_dist * ray_dir.y;
+		else
+			wall_x = pos.x + perp_wall_dist * ray_dir.x;
+		wall_x = wall_x - floor(wall_x);
+
+
+
+
+
+		// texture bestimmen auf die der ray geht
+		int texture_key;
+
+		if (side == 0) // vertikal
+		{
+			if (ray_dir.x > 0)
+				texture_key = T_EAST;
+			else
+				texture_key = T_WEST;
+		}
+		else // horizontal
+		{
+			if (ray_dir.y > 0)
+				texture_key = T_SOUTH;
+			else
+				texture_key = T_NORTH;
+		}
+		mlx_texture_t *texture = game->textures[texture_key];
+
+
+		
 
 		// berechne hoehe der line
 		int lineHeight = (int)(GAME_SCREEN_HEIGTH / perp_wall_dist);
@@ -114,6 +155,14 @@ void	raycasting(t_game *game)
 		if(drawStart < 0)drawStart = 0;
 		int drawEnd = lineHeight / 2 + GAME_SCREEN_HEIGTH / 2;
 		if(drawEnd >= GAME_SCREEN_HEIGTH)drawEnd = GAME_SCREEN_HEIGTH - 1;
+
+
+		if (x == 1)
+		{
+			printf("x[%i] wall_x[%f] t_key[%i]\n", x, wall_x, texture_key);
+		}
+
+
 
 		uint32_t color = 0xB22222FF;
 		if (side == 1) color = 0x730909FF;
