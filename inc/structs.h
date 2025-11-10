@@ -82,7 +82,11 @@ typedef struct s_game
 typedef struct s_ray
 {
 	t_vector	ray_dir;
-	// double		perp_wall_dist;
+	t_position	map_box;
+	t_vector	delta_dist;
+	t_position	step;
+	t_vector	side_dist;
+	double		perp_wall_dist;
 	int			side;
 	double		texture_x;
 	int			texture_key;

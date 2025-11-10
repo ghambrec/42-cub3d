@@ -14,139 +14,116 @@ static void draw_stripe(mlx_image_t *img, int x, int y0, int y1, uint32_t color)
 }
 
 
-// void	calc_ray_direction(t_game *game, t_ray *ray, int x)
-// {
-
-// }
-
-void	calc_rays(t_game *game, t_ray *ray, int x)
+// calc ray_direction
+// calc delta_dist
+void	calc_basic_params(t_game *game, t_ray *ray, int x)
 {
-	// ############################ OLD
-	double 		camera_x;
-	t_vector	ray_dir;
+	double		camera_x;
 	t_vector	pos;
-	t_vector	side_dist;
-	t_vector	delta_dist;
-	double		perp_wall_dist;
-	t_position	step;
-	int			hit;
-	int			side;
-	t_position	map_box;
-	// ############################ OLD END
-
-
-	// steps berechnung:
-	// [1] calc ray direction
-	// [2] calc dda params
-	// [3] calc dda
-	// [4] calc draw params
 
 	camera_x = 2 * x / (double)GAME_SCREEN_WIDTH - 1;
-	// ray direction
-	ray_dir.x = game->player.dir.x + game->player.plane.x * camera_x;
-	ray_dir.y = game->player.dir.y + game->player.plane.y * camera_x;
-
-	// current player position
+	ray->ray_dir.x = game->player.dir.x + game->player.plane.x * camera_x;
+	ray->ray_dir.y = game->player.dir.y + game->player.plane.y * camera_x;
 	pos = game->player.pos;
-	// current map box
-	map_box = (t_position){(int)game->player.pos.x, (int)game->player.pos.y};
+	ray->map_box = (t_position){(int)pos.x, (int)pos.y};
+	ray->delta_dist = (t_vector){1e30, 1e30};
+	if (ray->ray_dir.x != 0)
+		ray->delta_dist.x = fabs(1 / ray->ray_dir.x);
+	if (ray->ray_dir.y != 0)
+		ray->delta_dist.y = fabs(1 / ray->ray_dir.y);
+}
 
-	// calc delta_dist
-	delta_dist = (t_vector){1e30, 1e30};
-	if (ray_dir.x != 0)
-		delta_dist.x = fabs(1 / ray_dir.x);
-	if (ray_dir.y != 0)
-		delta_dist.y = fabs(1 / ray_dir.y);
+// calc step and side_dist for dda
+void	calc_dda_params(t_game *game, t_ray *ray)
+{
+	t_vector	pos;
 
-	// calc step and side_dist for the DDA
-	// x
-	if (ray_dir.x < 0)
+	pos = game->player.pos;
+	if (ray->ray_dir.x < 0)
 	{
-		step.x = -1;
-		side_dist.x = (pos.x - map_box.x) * delta_dist.x;
+		ray->step.x = -1;
+		ray->side_dist.x = (pos.x - ray->map_box.x) * ray->delta_dist.x;
 	}
 	else
 	{
-		step.x = 1;
-		side_dist.x = (map_box.x + 1.0 - pos.x) * delta_dist.x;
+		ray->step.x = 1;
+		ray->side_dist.x = (ray->map_box.x + 1.0 - pos.x) * ray->delta_dist.x;
 	}
-	// y
-	if (ray_dir.y < 0)
+	if (ray->ray_dir.y < 0)
 	{
-		step.y = -1;
-		side_dist.y = (pos.y - map_box.y) * delta_dist.y;
+		ray->step.y = -1;
+		ray->side_dist.y = (pos.y - ray->map_box.y) * ray->delta_dist.y;
 	}
 	else
 	{
-		step.y = 1;
-		side_dist.y = (map_box.y + 1.0 - pos.y) * delta_dist.y;
+		ray->step.y = 1;
+		ray->side_dist.y = (ray->map_box.y + 1.0 - pos.y) * ray->delta_dist.y;
 	}
+}
 
+// perform dda
+void	calc_dda(t_game *game, t_ray *ray)
+{
+	int			hit;
 
-	// perform DDA
 	hit = 0;
 	while (hit == 0)
 	{
 		// jump to next map box, either in x or in y dir
-		if (side_dist.x < side_dist.y)
+		if (ray->side_dist.x < ray->side_dist.y)
 		{
-			side_dist.x += delta_dist.x;
-			map_box.x += step.x;
-			side = 0;
+			ray->side_dist.x += ray->delta_dist.x;
+			ray->map_box.x += ray->step.x;
+			ray->side = 0;
 		}
 		else
 		{
-			side_dist.y += delta_dist.y;
-			map_box.y += step.y;
-			side = 1;
+			ray->side_dist.y += ray->delta_dist.y;
+			ray->map_box.y += ray->step.y;
+			ray->side = 1;
 		}
-		if (game->map.map2d[map_box.y][map_box.x] == '1')
+		if (game->map.map2d[ray->map_box.y][ray->map_box.x] == '1')
 		{
 			hit = 1;
 		}
-	}
+	}	
+}
 
-
-
-
+void	calc_draw_params(t_game *game, t_ray *ray, int x)
+{
 
 	// calc perpenducular distance from the camera plane to hitted wall
-	if (side == 0)
-		perp_wall_dist = side_dist.x - delta_dist.x;
+	if (ray->side == 0)
+		ray->perp_wall_dist = ray->side_dist.x - ray->delta_dist.x;
 	else
-		perp_wall_dist = side_dist.y - delta_dist.y;
+		ray->perp_wall_dist = ray->side_dist.y - ray->delta_dist.y;
 
-	draw_minimap_rays(game, x, ray_dir, perp_wall_dist);
-
-
+	draw_minimap_rays(game, x, ray->ray_dir, ray->perp_wall_dist);
 
 
 
 	// X-Treffpunkt im texture auf das der ray geht (zwischen 0-1)
 	double texture_x;
-	if (side == 0)
-		texture_x = pos.y + perp_wall_dist * ray_dir.y;
+	if (ray->side == 0)
+		texture_x = game->player.pos.y + ray->perp_wall_dist * ray->ray_dir.y;
 	else
-		texture_x = pos.x + perp_wall_dist * ray_dir.x;
+		texture_x = game->player.pos.x + ray->perp_wall_dist * ray->ray_dir.x;
 	texture_x = texture_x - floor(texture_x);
-
-
-
 
 
 	// texture bestimmen auf die der ray geht
 	int texture_key;
 
-	if (side == 0) // vertikal
+	if (ray->side == 0) // vertikal
 	{
-		if (ray_dir.x > 0)
+		if (ray->ray_dir.x > 0)
 			texture_key = T_EAST;
 		else
 			texture_key = T_WEST;
 	}
 	else // horizontal
 	{
-		if (ray_dir.y > 0)
+		if (ray->ray_dir.y > 0)
 			texture_key = T_SOUTH;
 		else
 			texture_key = T_NORTH;
@@ -157,7 +134,7 @@ void	calc_rays(t_game *game, t_ray *ray, int x)
 	
 
 	// berechne hoehe der line
-	int lineHeight = (int)(GAME_SCREEN_HEIGTH / perp_wall_dist);
+	int lineHeight = (int)(GAME_SCREEN_HEIGTH / ray->perp_wall_dist);
 	// berechne hoechsten und niedrigsten pixel fuer aktuelle spalte
 	int drawStart = -lineHeight / 2 + GAME_SCREEN_HEIGTH / 2;
 	if(drawStart < 0)drawStart = 0;
@@ -173,8 +150,28 @@ void	calc_rays(t_game *game, t_ray *ray, int x)
 
 
 	uint32_t color = 0xB22222FF;
-	if (side == 1) color = 0x730909FF;
+	if (ray->side == 1) color = 0x730909FF;
 	draw_stripe(game->img_game, x, drawStart, drawEnd, color);
+}
+
+void	calc_rays(t_game *game, t_ray *ray, int x)
+{
+
+
+	// steps berechnung:
+	// [1] calc basic params
+	calc_basic_params(game, ray, x);
+	// [2] calc dda params
+	calc_dda_params(game, ray);
+	// [3] calc dda
+	calc_dda(game, ray);
+	// [4] calc draw params
+	calc_draw_params(game, ray, x);
+
+
+
+
+
 }
 
 void	raycasting(t_game *game)
