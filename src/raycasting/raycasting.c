@@ -89,89 +89,67 @@ void	calc_dda(t_game *game, t_ray *ray)
 	}	
 }
 
-void	calc_draw_params(t_game *game, t_ray *ray, int x)
+// calc X-Hit in texture on which the ray is shooting (between 0 and 1)
+// calc texture on which the ray is shooting
+void	calc_texture_stuff(t_game *game, t_ray *ray)
 {
+	if (ray->side == 0)
+		ray->texture_x = game->player.pos.y + ray->perp_wall_dist * ray->ray_dir.y;
+	else
+		ray->texture_x = game->player.pos.x + ray->perp_wall_dist * ray->ray_dir.x;
+	ray->texture_x = ray->texture_x - floor(ray->texture_x);
 
-	// calc perpenducular distance from the camera plane to hitted wall
+	if (ray->side == 0)
+	{
+		if (ray->ray_dir.x > 0)
+			ray->texture_key = T_EAST;
+		else
+			ray->texture_key = T_WEST;
+	}
+	else
+	{
+		if (ray->ray_dir.y > 0)
+			ray->texture_key = T_SOUTH;
+		else
+			ray->texture_key = T_NORTH;
+	}
+}
+
+// calc perpenducular distance from the camera plane to hitted wall
+// calc height of the line to draw
+// calc draw start y and draw end y
+void	calc_draw_params(t_ray *ray)
+{
 	if (ray->side == 0)
 		ray->perp_wall_dist = ray->side_dist.x - ray->delta_dist.x;
 	else
 		ray->perp_wall_dist = ray->side_dist.y - ray->delta_dist.y;
-
-	draw_minimap_rays(game, x, ray->ray_dir, ray->perp_wall_dist);
-
-
-
-	// X-Treffpunkt im texture auf das der ray geht (zwischen 0-1)
-	double texture_x;
-	if (ray->side == 0)
-		texture_x = game->player.pos.y + ray->perp_wall_dist * ray->ray_dir.y;
-	else
-		texture_x = game->player.pos.x + ray->perp_wall_dist * ray->ray_dir.x;
-	texture_x = texture_x - floor(texture_x);
-
-
-	// texture bestimmen auf die der ray geht
-	int texture_key;
-
-	if (ray->side == 0) // vertikal
-	{
-		if (ray->ray_dir.x > 0)
-			texture_key = T_EAST;
-		else
-			texture_key = T_WEST;
-	}
-	else // horizontal
-	{
-		if (ray->ray_dir.y > 0)
-			texture_key = T_SOUTH;
-		else
-			texture_key = T_NORTH;
-	}
-	mlx_texture_t *texture = game->textures[texture_key];
-
-
-	
-
-	// berechne hoehe der line
-	int lineHeight = (int)(GAME_SCREEN_HEIGTH / ray->perp_wall_dist);
-	// berechne hoechsten und niedrigsten pixel fuer aktuelle spalte
-	int drawStart = -lineHeight / 2 + GAME_SCREEN_HEIGTH / 2;
-	if(drawStart < 0)drawStart = 0;
-	int drawEnd = lineHeight / 2 + GAME_SCREEN_HEIGTH / 2;
-	if(drawEnd >= GAME_SCREEN_HEIGTH)drawEnd = GAME_SCREEN_HEIGTH - 1;
-
-
-	// if (x == 1)
-	// {
-	// 	printf("x[%i] texture_x[%f] t_key[%i]\n", x, texture_x, texture_key);
-	// }
-
-
-
-	uint32_t color = 0xB22222FF;
-	if (ray->side == 1) color = 0x730909FF;
-	draw_stripe(game->img_game, x, drawStart, drawEnd, color);
+	ray->line_height = (int)(GAME_SCREEN_HEIGTH / ray->perp_wall_dist);
+	ray->draw_start = -ray->line_height / 2 + GAME_SCREEN_HEIGTH / 2;
+	if(ray->draw_start < 0)ray->draw_start = 0;
+	ray->draw_end = ray->line_height / 2 + GAME_SCREEN_HEIGTH / 2;
+	if(ray->draw_end >= GAME_SCREEN_HEIGTH)ray->draw_end = GAME_SCREEN_HEIGTH - 1;
 }
 
+
+// calculation steps
+// [1] calc basic params
+// [2] calc dda params
+// [3] calc dda
+// [4] calc draw params
+// [5] calc texture stuff
 void	calc_rays(t_game *game, t_ray *ray, int x)
 {
-
-
-	// steps berechnung:
-	// [1] calc basic params
 	calc_basic_params(game, ray, x);
-	// [2] calc dda params
 	calc_dda_params(game, ray);
-	// [3] calc dda
 	calc_dda(game, ray);
-	// [4] calc draw params
-	calc_draw_params(game, ray, x);
+	calc_draw_params(ray);
+	calc_texture_stuff(game, ray);
 
-
-
-
-
+	// untextured
+	uint32_t color = 0xB22222FF;
+	if (ray->side == 1) color = 0x730909FF;
+	draw_stripe(game->img_game, x, ray->draw_start, ray->draw_end, color);
 }
 
 void	raycasting(t_game *game)
@@ -184,7 +162,7 @@ void	raycasting(t_game *game)
 	while (x < GAME_SCREEN_WIDTH)
 	{
 		calc_rays(game, &ray, x);
-		// draw_minimap_rays(game, x, &ray); // hierher auslagern
+		draw_minimap_rays(game, x, &ray);
 		// draw_rays(game, &ray, x);
 		x++;
 	}

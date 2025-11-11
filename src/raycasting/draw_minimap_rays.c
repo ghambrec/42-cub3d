@@ -20,7 +20,7 @@ static void bresenham(mlx_image_t *img, int x0, int y0, int x1, int y1, uint32_t
     }
 }
 
-void	draw_minimap_rays(t_game *game, int i, t_vector ray_dir, double perp_wall_dist)
+void	draw_minimap_rays(t_game *game, int i, t_ray *ray)
 {
 	if (i % 5 == 0)
 	{
@@ -30,8 +30,8 @@ void	draw_minimap_rays(t_game *game, int i, t_vector ray_dir, double perp_wall_d
 		start.x = game->player.pos.x * game->minimap.tile_size + game->minimap.off_x;
 		start.y = game->player.pos.y * game->minimap.tile_size + game->minimap.off_y;
 	
-		end.x = start.x + ray_dir.x * perp_wall_dist * game->minimap.tile_size;
-		end.y = start.y + ray_dir.y * perp_wall_dist * game->minimap.tile_size;
+		end.x = start.x + ray->ray_dir.x * ray->perp_wall_dist * game->minimap.tile_size;
+		end.y = start.y + ray->ray_dir.y * ray->perp_wall_dist * game->minimap.tile_size;
 		bresenham(game->img_minimap, start.x, start.y, end.x, end.y, CMM_RAYS);
 	}
 }
