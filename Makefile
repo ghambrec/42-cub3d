@@ -79,7 +79,6 @@ SOURCES +=	key_hook.c \
 SOURCES +=	create_minimap.c \
 			helper.c \
 			paint_background.c \
-			paint_direction.c \
 			paint_minimap.c \
 			paint_player.c
 
@@ -89,6 +88,8 @@ SOURCES +=	turns.c \
 
 # RAYCASTING
 SOURCES +=	raycasting.c \
+			raycasting_calc.c \
+			raycasting_calc_textures.c \
 			draw_minimap_rays.c
 
 # ---------- OBJECTS ---------- #

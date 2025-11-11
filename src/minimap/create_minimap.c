@@ -25,6 +25,7 @@ static void	calculate_sizes(t_game *game)
 }
 
 // creates the minimap image and calls functions to paint into it
+// player is painted later that he is above the rays (looking better)
 void	create_minimap(t_game *game)
 {
 	calculate_sizes(game);
@@ -38,6 +39,4 @@ void	create_minimap(t_game *game)
 	}
 	paint_background(game);
 	paint_minimap(game);
-	paint_player(game);
-	// paint_direction(game);
 }

@@ -39,7 +39,6 @@ void		create_minimap(t_game *game);
 void		paint_background(t_game *game);
 void		paint_minimap(t_game *game);
 void		paint_player(t_game *game);
-void		paint_direction(t_game *game);
 uint32_t	get_tile_color(char mapval);
 void		put_pixel_safe(mlx_image_t *image, uint32_t x, uint32_t y, uint32_t color);
 
@@ -53,6 +52,8 @@ void	walk_east(t_game *game);
 
 // RAYCASTING
 void	raycasting(t_game *game);
+void	calc_rays(t_game *game, t_ray *ray, int x);
+void	calc_texture_stuff(t_game *game, t_ray *ray);
 void	draw_minimap_rays(t_game *game, int i, t_ray *ray);
 
 
