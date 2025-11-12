@@ -81,18 +81,18 @@ typedef struct s_game
 
 typedef struct s_ray
 {
-	t_vector	ray_dir;
-	t_position	map_box;
-	t_vector	delta_dist;
-	t_position	step;
-	t_vector	side_dist;
-	double		perp_wall_dist;
-	int			side;
-	double		texture_x;
-	int			texture_key;
-	int			line_height;
-	int			draw_start;
-	int			draw_end;
+	t_vector		ray_dir;
+	t_position		map_box;
+	t_vector		delta_dist;
+	t_position		step;
+	t_vector		side_dist;
+	double			perp_wall_dist;
+	int				side;
+	double			texture_x;
+	mlx_texture_t	*texture;
+	int				line_height;
+	int				draw_start;
+	int				draw_end;
 } t_ray;
 
 

@@ -13,15 +13,15 @@ void	calc_texture_stuff(t_game *game, t_ray *ray)
 	if (ray->side == 0)
 	{
 		if (ray->ray_dir.x > 0)
-			ray->texture_key = T_EAST;
+			ray->texture = game->textures[T_EAST];
 		else
-			ray->texture_key = T_WEST;
+			ray->texture = game->textures[T_WEST];
 	}
 	else
 	{
 		if (ray->ray_dir.y > 0)
-			ray->texture_key = T_SOUTH;
+			ray->texture = game->textures[T_SOUTH];
 		else
-			ray->texture_key = T_NORTH;
+			ray->texture = game->textures[T_NORTH];
 	}
 }
