@@ -88,7 +88,7 @@ typedef struct s_ray
 	t_vector		side_dist;
 	double			perp_wall_dist;
 	int				side;
-	double			texture_x;
+	double			wall_x;
 	mlx_texture_t	*texture;
 	int				line_height;
 	int				draw_start;

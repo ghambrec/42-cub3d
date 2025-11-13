@@ -7,6 +7,7 @@ static void	fill_ceil_floor(t_game *game)
 	uint32_t y;
 	uint32_t color;
 
+	// TODO take values from map file
 	y = 0;
 	while (y < GAME_SCREEN_HEIGTH)
 	{

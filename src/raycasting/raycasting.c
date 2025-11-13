@@ -13,6 +13,7 @@ static void draw_stripe(mlx_image_t *img, int x, int y0, int y1, uint32_t color)
     }
 }
 
+
 // raycasting calculation
 // raycasting draw
 // paint minimap player (so that he is above the rays)

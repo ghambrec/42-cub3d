@@ -2,10 +2,10 @@
 
 static void	set_values_dummy(t_game *game)
 {
-	game->texture_path.north = ft_strdup("./textures/wood.png");
-	game->texture_path.east = ft_strdup("./textures/colorstone.png");
-	game->texture_path.south = ft_strdup("./textures/eagle.png");
-	game->texture_path.west = ft_strdup("./textures/redbrick.png");
+	game->texture_path.north = ft_strdup("./textures/bus.png");
+	game->texture_path.east = ft_strdup("./textures/bus.png");
+	game->texture_path.south = ft_strdup("./textures/bus.png");
+	game->texture_path.west = ft_strdup("./textures/bus.png");
 }
 
 static void	load_textures(t_game *game)

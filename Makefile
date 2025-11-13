@@ -90,7 +90,8 @@ SOURCES +=	turns.c \
 SOURCES +=	raycasting.c \
 			raycasting_calc.c \
 			raycasting_calc_textures.c \
-			draw_minimap_rays.c
+			draw_minimap_rays.c \
+			draw_rays.c
 
 # ---------- OBJECTS ---------- #
 OBJECT_DIR = obj
