@@ -16,9 +16,9 @@ int	main(int argc, char **argv)
 {
 	t_game	game;
 
-	game_init(&game);
+	init_game(&game);
 	arg_validation(argv, argc);
 	game.map.map_name = argv[1];
 	map_validation(&game);
-	free(game.map.map_string);
+	printf("Map validation succesfull!");
 }

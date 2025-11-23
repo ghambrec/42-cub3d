@@ -41,6 +41,7 @@ typedef struct	s_player
 	t_vector	pos;
 	t_vector	dir;
 	t_vector	plane;
+	int			player_count;
 } t_player;
 
 typedef struct s_map_info

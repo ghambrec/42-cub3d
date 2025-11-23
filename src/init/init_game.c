@@ -9,4 +9,5 @@ void	init_game(t_game *game)
 
 	game->img_game = NULL;
 	game->img_minimap = NULL;
+	game->player.player_count = 0;
 }
