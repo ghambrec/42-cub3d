@@ -48,6 +48,7 @@ static void	calc_dda_params(t_game *game, t_ray *ray)
 }
 
 // perform dda
+// jump to next map box, either in x or in y dir
 static void	calc_dda(t_game *game, t_ray *ray)
 {
 	int			hit;
@@ -55,7 +56,6 @@ static void	calc_dda(t_game *game, t_ray *ray)
 	hit = 0;
 	while (hit == 0)
 	{
-		// jump to next map box, either in x or in y dir
 		if (ray->side_dist.x < ray->side_dist.y)
 		{
 			ray->side_dist.x += ray->delta_dist.x;
@@ -72,7 +72,7 @@ static void	calc_dda(t_game *game, t_ray *ray)
 		{
 			hit = 1;
 		}
-	}	
+	}
 }
 
 // calc perpenducular distance from the camera plane to hitted wall
@@ -86,9 +86,11 @@ static void	calc_draw_params(t_ray *ray)
 		ray->perp_wall_dist = ray->side_dist.y - ray->delta_dist.y;
 	ray->line_height = (int)(GAME_SCREEN_HEIGTH / ray->perp_wall_dist);
 	ray->draw_start = -ray->line_height / 2 + GAME_SCREEN_HEIGTH / 2;
-	if(ray->draw_start < 0)ray->draw_start = 0;
+	if (ray->draw_start < 0)
+		ray->draw_start = 0;
 	ray->draw_end = ray->line_height / 2 + GAME_SCREEN_HEIGTH / 2;
-	if(ray->draw_end >= GAME_SCREEN_HEIGTH)ray->draw_end = GAME_SCREEN_HEIGTH - 1;
+	if (ray->draw_end >= GAME_SCREEN_HEIGTH)
+		ray->draw_end = GAME_SCREEN_HEIGTH - 1;
 }
 
 // calculation steps

@@ -25,7 +25,7 @@
 // GAME
 # define GAME_SCREEN_WIDTH 1920
 # define GAME_SCREEN_HEIGTH 1080
-# define GAME_FOV 0.66
+# define GAME_FOV 0.66 // noch umwandeln zur normalen kennung
 
 // MOVEMENT
 // # define MV_ANGLE 0.075

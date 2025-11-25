@@ -24,12 +24,11 @@ void	draw_minimap_rays(t_game *game, int i, t_ray *ray)
 {
 	if (i % 5 == 0)
 	{
-		t_position start;
-		t_position end;
+		t_position  start;
+		t_position  end;
 
 		start.x = game->player.pos.x * game->minimap.tile_size + game->minimap.off_x;
 		start.y = game->player.pos.y * game->minimap.tile_size + game->minimap.off_y;
-	
 		end.x = start.x + ray->ray_dir.x * ray->perp_wall_dist * game->minimap.tile_size;
 		end.y = start.y + ray->ray_dir.y * ray->perp_wall_dist * game->minimap.tile_size;
 		bresenham(game->img_minimap, start.x, start.y, end.x, end.y, CMM_RAYS);
