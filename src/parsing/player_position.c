@@ -22,8 +22,8 @@ static void	get_player_dir(t_game *game, char dir)
 		game->player.dir.x = -1;
 		game->player.dir.y = 0;
 	}
-	game->player.plane.x = -game->player.dir.y * GAME_FOV;
-	game->player.plane.y = game->player.dir.x * GAME_FOV;
+	game->player.plane.x = -game->player.dir.y * GAME_FOV / 100;
+	game->player.plane.y = game->player.dir.x * GAME_FOV / 100;
 }
 
 void	get_player_pos(t_game *game)
