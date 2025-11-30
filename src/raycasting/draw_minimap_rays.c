@@ -24,6 +24,8 @@ void	draw_minimap_rays(t_game *game, int i, t_ray *ray)
 {
 	if (i % 5 == 0)
 	{
+        if (!game->minimap.mm_exist)
+		    return ;
 		t_position  start;
 		t_position  end;
 
