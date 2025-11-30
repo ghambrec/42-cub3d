@@ -33,6 +33,7 @@ typedef struct s_minimap
 	int			tile_size;
 	int			off_x;
 	int			off_y;
+	bool		mm_exist;
 } t_minimap;
 
 typedef struct	s_player

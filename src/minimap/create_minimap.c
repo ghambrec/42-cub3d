@@ -1,5 +1,23 @@
 #include "cub3d.h"
 
+// if map too big no minimap is possible
+static void check_size(t_game *game)
+{
+	static int message_shown = false;
+
+	game->minimap.mm_exist = true;
+	if (game->map.max_width > GAME_SCREEN_WIDTH / MM_SIZE || \
+		game->map.max_height > GAME_SCREEN_HEIGTH / MM_SIZE)
+	{
+		game->minimap.mm_exist = false;
+		if (!message_shown)
+		{
+			ft_putendl_fd("Map too big, no minimap possible.", STDOUT_FILENO);
+			message_shown = true;
+		}
+	}
+}
+
 // calculates sizes and offset for the minimap
 static void	calculate_sizes(t_game *game)
 {
@@ -22,6 +40,7 @@ static void	calculate_sizes(t_game *game)
 	used_h = minimap->tile_size * game->map.max_height;
 	minimap->off_x = (minimap->width - used_w) / 2;
 	minimap->off_y = (minimap->height - used_h) / 2;
+	check_size(game);
 }
 
 // creates the minimap image and calls functions to paint into it
@@ -29,6 +48,8 @@ static void	calculate_sizes(t_game *game)
 void	create_minimap(t_game *game)
 {
 	calculate_sizes(game);
+	if (!game->minimap.mm_exist)
+		return ;
 	if (!game->img_minimap)
 	{
 		game->img_minimap = mlx_new_image(game->mlx, game->minimap.width, game->minimap.height);

@@ -6,7 +6,7 @@ CYAN = \033[0;36m
 NC = \033[0m
 
 # ---------- MAIN ---------- #
-NAME := cub3d
+NAME := cub3D
 CC := cc
 INCLUDE_DIR := ./inc
 CFLAGS = -Wall -Wextra -Werror -I $(INCLUDE_DIR) -g -O3 -MMD
@@ -50,8 +50,7 @@ VPATH = $(SOURCE_DIRS)
 SOURCES = main.c
 
 # HELPERS
-SOURCES +=	helpers.c \
-			render_game.c
+SOURCES +=	helpers.c 
 
 # INIT
 SOURCES +=	init_game.c \
