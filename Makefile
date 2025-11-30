@@ -50,8 +50,7 @@ VPATH = $(SOURCE_DIRS)
 SOURCES = main.c
 
 # HELPERS
-SOURCES +=	helpers.c \
-			render_game.c
+SOURCES +=	helpers.c 
 
 # INIT
 SOURCES +=	init_game.c \
