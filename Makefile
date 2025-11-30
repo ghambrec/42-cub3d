@@ -204,4 +204,8 @@ del: fclean
 	@echo "$(RED)Removing library folder$(NC)"
 	@rm -rf $(LIB_DIR)
 
-.PHONY: all clean fclean re test del
+# run rule - run the game
+run: $(NAME)
+	@./cub3D map_easy.cub
+
+.PHONY: all clean fclean re test del run
