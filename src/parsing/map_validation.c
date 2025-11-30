@@ -2,7 +2,7 @@
 
 void	map_validation(t_game *game)
 {
-	map_open(&game->map);
+	map_open(game);
 	char_validation(game->map.map_string);
 	create_map(game);
 	get_map_width_height(game);

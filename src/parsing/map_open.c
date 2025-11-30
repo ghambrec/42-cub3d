@@ -18,27 +18,69 @@ void	create_map(t_game *game)
 	game->map.map2d_copy = ft_split(game->map.map_string, '\n');
 }
 
-void	map_open(t_map_info *map_info)
+void	map_open(t_game *game)
 {
 	int		fd;
 	char	*temp;
 	char	*line;
 
-	fd = open(map_info->map_name, O_RDONLY);
-	map_info->map_string = ft_strdup("");
+	fd = open(game->map.map_name, O_RDONLY);
+	game->map.map_string = ft_strdup("");
 	while (1)
 	{
 		line = get_next_line(fd);
 		if (line == NULL)
 			break ;
-		temp = ft_strjoin_gnl(map_info->map_string, line);
+		if (is_texture_line(line))
+		{
+			copy_texture_paths(line, game);
+			continue ;
+		}
+		temp = ft_strjoin_gnl(game->map.map_string, line);
 		free(line);
-		free(map_info->map_string);
-		map_info->map_string = ft_strdup(temp);
+		free(game->map.map_string);
+		game->map.map_string = ft_strdup(temp);
 		free(temp);
 	}
 	close(fd);
 	return ;
+}
+
+void	copy_texture_paths(char *texture_path_string, t_game *game)
+{
+	char	*dot;
+	char	*path;
+	int		len;
+
+	if (texture_path_string[0] == 'F' && texture_path_string[1] == ' ')
+	{
+		game->map.floor_color = ft_substr(texture_path_string, 2, 
+			ft_strlen(texture_path_string) - 3);
+		return ;
+	}
+	if (texture_path_string[0] == 'C' && texture_path_string[1] == ' ')
+	{
+		game->map.ceiling_color = ft_substr(texture_path_string, 2, 
+			ft_strlen(texture_path_string) - 3);
+		return ;
+	}
+	dot = ft_strchr(texture_path_string, '.');
+	if (dot == NULL)
+		return ;
+	len = 0;
+	while (dot[len] && dot[len] != '\n')
+		len++;
+	path = ft_substr(dot, 0, len);
+	if (texture_path_string[0] == 'N' && texture_path_string[1] == 'O')
+		game->texture_path.north = path;
+	else if (texture_path_string[0] == 'S' && texture_path_string[1] == 'O')
+		game->texture_path.south = path;
+	else if (texture_path_string[0] == 'W' && texture_path_string[1] == 'E')
+		game->texture_path.west = path;
+	else if (texture_path_string[0] == 'E' && texture_path_string[1] == 'A')
+		game->texture_path.east = path;
+	else
+		free(path);
 }
 
 void	get_map_width_height(t_game *game)

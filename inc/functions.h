@@ -17,11 +17,13 @@ void	init_hooks(t_game *game);
 void	arg_validation(char **argv, int n);
 void	map_validation(t_game *game);
 void	char_validation(char *map);
-void	map_open(t_map_info *map_info);
+void	map_open(t_game *game);
 int		floodfill_validation(t_game *game);
 void	create_map(t_game *game);
 void	get_player_pos(t_game *game);
 void	get_map_width_height(t_game *game);
+int     is_texture_line(char *line);
+void	copy_texture_paths(char *texture_path_string, t_game *game);
 
 // EXIT
 void	exit_success(t_game *game);

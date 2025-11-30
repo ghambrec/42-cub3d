@@ -10,9 +10,9 @@ int	main(int argc, char **argv)
 	map_validation(&game);
 
 	init_mlx(&game);
-	render_game(&game);
-	init_hooks(&game);
-	mlx_loop(game.mlx);
-	exit_success(&game);
+	//render_game(&game);
+	//init_hooks(&game);
+	//mlx_loop(game.mlx);
+	//exit_success(&game);
 	return (EXIT_SUCCESS);
 }

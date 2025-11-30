@@ -64,7 +64,8 @@ SOURCES += 	check_args.c \
 			map_validation.c \
 			map_open.c \
 			floodfill.c \
-			player_position.c
+			player_position.c \
+			texture_check.c
 
 # EXIT
 SOURCES +=	exit.c \
