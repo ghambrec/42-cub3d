@@ -6,6 +6,7 @@
 
 // HELPER
 void	ft_print2d(char **str2d);
+void	fill_ceil_floor(t_game *game);
 void	render_game(t_game *game);
 
 // INIT
@@ -58,7 +59,5 @@ void	calc_rays(t_game *game, t_ray *ray, int x);
 void	calc_texture_stuff(t_game *game, t_ray *ray);
 void	draw_minimap_rays(t_game *game, int i, t_ray *ray);
 void	draw_rays(t_game *game, t_ray *ray, int x);
-
-
 
 #endif
