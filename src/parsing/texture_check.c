@@ -19,7 +19,7 @@ int	is_texture_line(char *line)
 	return (0);
 }
 
-int	parse_color(char *line)
+uint32_t	parse_color(char *line)
 {
 	char	**rgb;
 	int		r;
