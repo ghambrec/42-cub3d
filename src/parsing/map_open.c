@@ -54,14 +54,12 @@ void	copy_texture_paths(char *texture_path_string, t_game *game)
 
 	if (texture_path_string[0] == 'F' && texture_path_string[1] == ' ')
 	{
-		game->map.floor_color = ft_substr(texture_path_string, 2, 
-			ft_strlen(texture_path_string) - 3);
+		game->map.floor_color = parse_color(texture_path_string);
 		return ;
 	}
 	if (texture_path_string[0] == 'C' && texture_path_string[1] == ' ')
 	{
-		game->map.ceiling_color = ft_substr(texture_path_string, 2, 
-			ft_strlen(texture_path_string) - 3);
+		game->map.ceiling_color = parse_color(texture_path_string);
 		return ;
 	}
 	dot = ft_strchr(texture_path_string, '.');

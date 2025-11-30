@@ -24,8 +24,8 @@ int	main(int argc, char **argv)
 	game.map.map_name = argv[1];
 	map_validation(&game);
 
-	printf("%s", game.map.floor_color);
-	printf("%s", game.map.ceiling_color);
+	printf("%d", game.map.floor_color);
+	printf("%d", game.map.ceiling_color);
 	printf("%s", game.texture_path.east);
 	printf("%s", game.texture_path.north);
 	printf("%s", game.texture_path.west);
