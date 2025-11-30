@@ -1,17 +1,7 @@
 #include "cub3d.h"
 
-static void	set_values_dummy(t_game *game)
-{
-	game->texture_path.north = ft_strdup("./textures/bus.png");
-	game->texture_path.east = ft_strdup("./textures/bus.png");
-	game->texture_path.south = ft_strdup("./textures/bus.png");
-	game->texture_path.west = ft_strdup("./textures/bus.png");
-}
-
 static void	load_textures(t_game *game)
 {
-	set_values_dummy(game); //nur zum testen, da das noch nicht ueber die map validierung laeuft
-
 	game->textures[T_NORTH] = mlx_load_png(game->texture_path.north);
 	if (!game->textures[T_NORTH])
 	{
