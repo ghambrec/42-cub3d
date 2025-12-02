@@ -1,11 +1,17 @@
-NO ./textures/north2.xpm
-SO ./textures/south.xpm
-WE ./textures/west.xpm
-EA ./textures/east.xpm
+EA           				./textures/wood.png
+NO ./textures/bluestone.png
+WE ./textures/eagle.png
 
-C 225,30,0
-F 166,40,6
+SO ./textures/colorstone.png
 
-1111111 111
-1N00001 101
-1111111 111
+F 0,255,0
+C 255,0,0
+
+
+1111111
+1000001
+1000001
+1001001
+10 N001
+1000001
+1111111

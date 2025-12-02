@@ -23,9 +23,9 @@ void	fill_ceil_floor(t_game *game)
 	while (y < GAME_SCREEN_HEIGTH)
 	{
 		if (y >= GAME_SCREEN_HEIGTH / 2)
-			color = FLOOR;
+			color = game->map.floor_color;
 		else
-			color = CEIL;
+			color = game->map.ceiling_color;
 		x = 0;
 		while (x < GAME_SCREEN_WIDTH)
 		{
