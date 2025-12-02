@@ -13,6 +13,14 @@ void	clean_game(t_game *game)
 		free(game->texture_path.west);
 		free(game->texture_path.south);
 	}
+	if (game->textures[T_NORTH])
+		mlx_delete_texture(game->textures[T_NORTH]);
+	if (game->textures[T_EAST])
+		mlx_delete_texture(game->textures[T_EAST]);
+	if (game->textures[T_SOUTH])
+		mlx_delete_texture(game->textures[T_SOUTH]);
+	if (game->textures[T_WEST])
+		mlx_delete_texture(game->textures[T_WEST]);
 	if (game->mlx)
 		mlx_terminate(game->mlx);
 }

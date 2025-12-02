@@ -16,4 +16,8 @@ void	init_game(t_game *game)
 	game->texture_path.south = NULL;
 	game->map.ceiling_color = 0;
 	game->map.floor_color = 0;
+	game->textures[T_NORTH] = NULL;
+	game->textures[T_EAST] = NULL;
+	game->textures[T_SOUTH] = NULL;
+	game->textures[T_WEST] = NULL;
 }
