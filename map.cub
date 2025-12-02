@@ -1,14 +1,14 @@
 NO    ./textures/bus.png
 SO   ./textures/bus.png
 WE  ./textures/bus.png
-EA ./textures/bus.png
+EA  ./textures/bus.png
 
-F  920,120,120
+F  120,120,120
 C  180,180,255
 
 1111111
 1000001
 1000001
-100N001
+100E001
 1000001
 1111111

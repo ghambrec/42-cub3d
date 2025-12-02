@@ -45,7 +45,7 @@ int	floodfill_validation(t_game *game)
 		while (i < ft_strlen(game->map.map2d_copy[y]))
 		{
 			if (game->map.map2d_copy[y][i] == '0')
-				flood_fill(y, i, game);
+				flood_fill(i, y, game);
 			i++;
 		}
 		y++;
