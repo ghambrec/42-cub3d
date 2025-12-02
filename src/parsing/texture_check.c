@@ -74,7 +74,7 @@ uint32_t	parse_color(char *line, t_game *game)
 		ft_str2d_free(rgb);
 		exit_failure(game, "Wrong rgb value");
 	}
-	color = (r << 16) | (g << 8) | b;
+	color = (r << 24) | (g << 16) | (b << 8) | 255;
 	ft_str2d_free(rgb);
 	return (color);
 }

@@ -53,8 +53,8 @@ typedef struct s_map_info
 	char		**map2d_copy;
 	int			max_width;
 	int			max_height;
-	uint64_t 	floor_color;
-	uint64_t	ceiling_color;
+	uint32_t 	floor_color;
+	uint32_t	ceiling_color;
 } t_map_info;
 
 typedef struct s_size
