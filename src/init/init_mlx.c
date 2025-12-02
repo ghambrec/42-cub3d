@@ -32,8 +32,4 @@ void	init_mlx(t_game *game)
 		exit_failure(game, "failed to init the mlx (mlx_init)");
 
 	load_textures(game);
-	free(game->texture_path.north);
-	free(game->texture_path.east);
-	free(game->texture_path.south);
-	free(game->texture_path.west);
 }

@@ -61,6 +61,7 @@ void	copy_texture_paths(char *texture_path_string, t_game *game)
 		len++;
 	path = ft_substr(dot, 0, len);
 	parse_textures(texture_path_string, path, game);
+	free(path);
 }
 
 void	get_map_width_height(t_game *game)

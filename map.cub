@@ -1,7 +1,7 @@
-NO    ./textures/bus.png
-SO   ./textures/bus.png
-WE  ./textures/bus.png
-EA  ./textures/bus.png
+NO ./textures/bus.png
+SO ./textures/bus.png
+WE ./textures/bus.png
+EA ./textures/bus.png
 
 F  120,120,120
 C  180,180,255
