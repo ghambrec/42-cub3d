@@ -19,30 +19,66 @@ int	is_texture_line(char *line)
 	return (0);
 }
 
-uint32_t	parse_color(char *line)
+int	ft_atoi_rgb(const char *str)
 {
-	char	**rgb;
-	int		r;
-	int		g;
-	int		b;
-	int		color;
+	int			i;
+	int			result;
+
+	if (!str || !str[0])
+		return (-1);
+	i = 0;
+	result = 0;
+	while (str[i] == ' ' || str[i] == '\t')
+		i++;
+	if (str[i] == '+')
+		i++;
+	if (str[i] == '-' || !ft_isdigit(str[i]))
+		return (-1);
+	while (ft_isdigit(str[i]))
+	{
+		result = result * 10 + (str[i] - '0');
+		if (result > 255)
+			return (-1);
+		i++;
+	}
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n')
+		i++;
+	if (str[i] != '\0')
+		return (-1);
+	return (result);
+}
+
+uint32_t	parse_color(char *line, t_game *game)
+{
+	char		**rgb;
+	int			r;
+	int			g;
+	int			b;
+	uint32_t	color;
 
 	line += 2;
-	while (*line == ' ')
+	while (*line == ' ' || *line == '\t')
 		line++;
 	rgb = ft_split(line, ',');
-	if (!rgb || !rgb[0] || !rgb[1] || !rgb[2])
-		return (-1);	
-	r = ft_atoi(rgb[0]);
-	g = ft_atoi(rgb[1]);
-	b = ft_atoi(rgb[2]);
-	color = (r << 16) | (g << 8) | b;
-	r = 0;
-	while (rgb[r])
+	if (!rgb || !rgb[0] || !rgb[1] || !rgb[2] || rgb[3])
 	{
-		free(rgb[r]);
-		r++;
+		ft_putendl_fd("Invalid number for RGB", 2);
+		if (rgb)
+			ft_str2d_free(rgb);
+		clean_game(game);
+		exit(EXIT_FAILURE);
 	}
-	free(rgb);
+	r = ft_atoi_rgb(rgb[0]);
+	g = ft_atoi_rgb(rgb[1]);
+	b = ft_atoi_rgb(rgb[2]);
+	if (r == -1 || g == -1 || b == -1)
+	{
+		ft_putendl_fd("Invalid RGB value", 2);
+		ft_str2d_free(rgb);
+		clean_game(game);
+		exit(EXIT_FAILURE);
+	}
+	color = (r << 16) | (g << 8) | b;
+	ft_str2d_free(rgb);
 	return (color);
 }

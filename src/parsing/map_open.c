@@ -52,16 +52,7 @@ void	copy_texture_paths(char *texture_path_string, t_game *game)
 	char	*path;
 	int		len;
 
-	if (texture_path_string[0] == 'F' && texture_path_string[1] == ' ')
-	{
-		game->map.floor_color = parse_color(texture_path_string);
-		return ;
-	}
-	if (texture_path_string[0] == 'C' && texture_path_string[1] == ' ')
-	{
-		game->map.ceiling_color = parse_color(texture_path_string);
-		return ;
-	}
+	parse_rgbs(texture_path_string, game),
 	dot = ft_strchr(texture_path_string, '.');
 	if (dot == NULL)
 		return ;
@@ -69,16 +60,7 @@ void	copy_texture_paths(char *texture_path_string, t_game *game)
 	while (dot[len] && dot[len] != '\n')
 		len++;
 	path = ft_substr(dot, 0, len);
-	if (texture_path_string[0] == 'N' && texture_path_string[1] == 'O')
-		game->texture_path.north = path;
-	else if (texture_path_string[0] == 'S' && texture_path_string[1] == 'O')
-		game->texture_path.south = path;
-	else if (texture_path_string[0] == 'W' && texture_path_string[1] == 'E')
-		game->texture_path.west = path;
-	else if (texture_path_string[0] == 'E' && texture_path_string[1] == 'A')
-		game->texture_path.east = path;
-	else
-		free(path);
+	parse_textures(texture_path_string, path, game);
 }
 
 void	get_map_width_height(t_game *game)
@@ -98,4 +80,10 @@ void	get_map_width_height(t_game *game)
 	}
 	game->map.max_width = max_width;
 	game->map.max_height = len_y;
+	if (game->map.max_width < 3 || game->map.max_height < 3)
+	{
+		ft_putendl_fd("Map is too small!", 2);
+		clean_game(game);
+		exit(EXIT_FAILURE);
+	}
 }

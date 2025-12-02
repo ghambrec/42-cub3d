@@ -69,6 +69,7 @@ typedef struct s_textures_path
 	char	*east;
 	char	*south;
 	char	*west;
+	bool	is_double;
 } t_textures_path;
 
 typedef struct s_game

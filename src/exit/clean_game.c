@@ -2,9 +2,16 @@
 
 void	clean_game(t_game *game)
 {
-	(void)game;
-	ft_putendl_fd("TODO --> clean_game.c", STDOUT_FILENO);
 	free(game->map.map_string);
-	ft_str2d_free(game->map.map2d);
-	mlx_terminate(game->mlx);
+	if (game->map.map2d)
+	{
+		ft_str2d_free(game->map.map2d);
+		ft_str2d_free(game->map.map2d_copy);
+		free(game->texture_path.east);
+		free(game->texture_path.north);
+		free(game->texture_path.west);
+		free(game->texture_path.south);
+	}
+	if (game->mlx)
+		mlx_terminate(game->mlx);
 }

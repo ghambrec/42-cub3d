@@ -8,9 +8,12 @@ void	init_game(t_game *game)
 	game->map.map_string = NULL;
 	game->img_game = NULL;
 	game->img_minimap = NULL;
+	game->mlx = NULL;
 	game->player.player_count = 0;
 	game->texture_path.north = NULL;
 	game->texture_path.west = NULL;
 	game->texture_path.east = NULL;
 	game->texture_path.south = NULL;
+	game->map.ceiling_color = 0;
+	game->map.floor_color = 0;
 }

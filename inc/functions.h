@@ -25,7 +25,11 @@ void	    get_player_pos(t_game *game);
 void	    get_map_width_height(t_game *game);
 int         is_texture_line(char *line);
 void        copy_texture_paths(char *texture_path_string, t_game *game);
-uint32_t    parse_color(char *line);
+uint32_t	parse_color(char *line, t_game *game);
+void        parse_rgbs(char *string, t_game *game);
+void        parse_textures(char *string, char *path, t_game *game);
+
+
 
 
 // EXIT
