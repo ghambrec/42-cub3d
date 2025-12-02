@@ -17,7 +17,7 @@ void	init_hooks(t_game *game);
 // PARSING
 void	    arg_validation(char **argv, int n);
 void	    map_validation(t_game *game);
-void	    char_validation(char *map);
+void	    char_validation(t_game *game);
 void	    map_open(t_game *game);
 int		    floodfill_validation(t_game *game);
 void	    create_map(t_game *game);
@@ -34,7 +34,7 @@ void        parse_textures(char *string, char *path, t_game *game);
 
 // EXIT
 void	exit_success(t_game *game);
-void	exit_failure(t_game *game, char *msg);
+void    exit_failure(t_game *game, char *msg);
 void	clean_game(t_game *game);
 
 // HOOKS

@@ -81,9 +81,5 @@ void	get_map_width_height(t_game *game)
 	game->map.max_width = max_width;
 	game->map.max_height = len_y;
 	if (game->map.max_width < 3 || game->map.max_height < 3)
-	{
-		ft_putendl_fd("Map is too small!", 2);
-		clean_game(game);
-		exit(EXIT_FAILURE);
-	}
+		exit_failure(game, "map is to small");
 }

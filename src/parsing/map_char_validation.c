@@ -20,17 +20,16 @@ static int	check_chars(char c)
 	return (-1);
 }
 
-void	char_validation(char *map)
+void	char_validation(t_game *game)
 {
 	int	i;
 
 	i = 0;
-	while (map[i])
+	while (game->map.map_string[i])
 	{
-		if (check_chars(map[i]) == -1)
+		if (check_chars(game->map.map_string[i]) == -1)
 		{
-			ft_putstr_fd("Map is invalid! Unallowed character used\n", 2);
-			exit(EXIT_FAILURE);
+			exit_failure(game, "unallowed character");
 		}
 		i++;
 	}

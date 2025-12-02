@@ -62,21 +62,17 @@ uint32_t	parse_color(char *line, t_game *game)
 	rgb = ft_split(line, ',');
 	if (!rgb || !rgb[0] || !rgb[1] || !rgb[2] || rgb[3])
 	{
-		ft_putendl_fd("Invalid number for RGB", 2);
 		if (rgb)
 			ft_str2d_free(rgb);
-		clean_game(game);
-		exit(EXIT_FAILURE);
+		exit_failure(game, "Not enough rgb values");
 	}
 	r = ft_atoi_rgb(rgb[0]);
 	g = ft_atoi_rgb(rgb[1]);
 	b = ft_atoi_rgb(rgb[2]);
 	if (r == -1 || g == -1 || b == -1)
 	{
-		ft_putendl_fd("Invalid RGB value", 2);
 		ft_str2d_free(rgb);
-		clean_game(game);
-		exit(EXIT_FAILURE);
+		exit_failure(game, "Wrong rgb value");
 	}
 	color = (r << 16) | (g << 8) | b;
 	ft_str2d_free(rgb);

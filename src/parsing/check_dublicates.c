@@ -5,22 +5,14 @@ void    parse_rgbs(char *string, t_game *game)
     if (string[0] == 'F' && string[1] == ' ')
 	{
         if (game->map.floor_color != 0)
-        {
-            ft_putendl_fd("Error dublicate found!", 2);
-            clean_game(game);
-            exit(EXIT_FAILURE);
-        }
+            exit_failure(game, "dublicates not allowed");
 		game->map.floor_color = parse_color(string, game);
 		return ;
 	}
 	if (string[0] == 'C' && string[1] == ' ')
 	{
 		if (game->map.ceiling_color != 0)
-        {
-            ft_putendl_fd("Error dublicate found!", 2);
-            clean_game(game);
-            exit(EXIT_FAILURE);
-        }
+            exit_failure(game, "dublicates not allowed");
 		game->map.ceiling_color = parse_color(string, game);
 		return ;
 	}
@@ -29,11 +21,7 @@ void    parse_rgbs(char *string, t_game *game)
 static void check_dublicate(char *string, t_game *game)
 {
     if (string != NULL)
-    {
-        ft_putendl_fd("Error dublicate found!", 2);
-        clean_game(game);
-        exit(EXIT_FAILURE);
-    }
+        exit_failure(game, "dublicates not allowed");
 }
 
 void    parse_textures(char *string, char *path, t_game *game)

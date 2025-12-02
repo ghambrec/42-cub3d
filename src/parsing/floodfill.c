@@ -15,16 +15,7 @@
 static int	flood_fill(int x, int y, t_game *game)
 {
 	if (x < 0 || y < 0 || x >= game->map.max_width || y >= game->map.max_height)
-	{
-		ft_putstr_fd("Map is invalid! Not closed/surrounded by walls\n", 2);
-		exit(EXIT_FAILURE);
-	}
-	if (game->map.map2d_copy[y][x] == ' ' || game->map.map2d_copy[y][x] == '\0')
-	{
-		ft_putendl_fd("Error: Map is not closed", 2);
-		clean_game(game);
-		exit(EXIT_FAILURE);
-	}
+		exit_failure(game, "Map is not surrounded by Walls");
 	if (game->map.map2d[y][x] == 'E' || game->map.map2d[y][x] == 'N' || game->map.map2d[y][x] == 'S'
 		|| game->map.map2d[y][x] == 'W')
 	{
@@ -54,16 +45,12 @@ int	floodfill_validation(t_game *game)
 		while (i < ft_strlen(game->map.map2d_copy[y]))
 		{
 			if (game->map.map2d_copy[y][i] == '0')
-			{
-				clean_game(game);
-				ft_putendl_fd("Error map got islands", 2);
-				exit(EXIT_FAILURE);
-			}
+				flood_fill(y, i, game);
 			i++;
 		}
 		y++;
 	}
 	if (game->player.player_count != 0)
-		return(ft_putendl_fd("Error, Invalid number of Players!", 2), 0);
+		exit_failure(game, "Invalid number of players");
 	return (1);
 }

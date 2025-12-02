@@ -1,17 +1,14 @@
-EA           				./textures/wood.png
-NO ./textures/bluestone.png
-WE ./textures/eagle.png
+NO    ./textures/bus.png
+SO   ./textures/bus.png
+WE  ./textures/bus.png
+EA ./textures/bus.png
 
-SO ./textures/colorstone.png
-
-F 0,255,0
-C 255,0,0
-
+F  920,120,120
+C  180,180,255
 
 1111111
 1000001
 1000001
-1001001
-10 N001
+100N001
 1000001
 1111111

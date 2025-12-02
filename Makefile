@@ -65,7 +65,8 @@ SOURCES += 	check_args.c \
 			floodfill.c \
 			player_position.c \
 			texture_check.c \
-			check_dublicates.c
+			check_dublicates.c \
+			error.c
 
 # EXIT
 SOURCES +=	exit.c \

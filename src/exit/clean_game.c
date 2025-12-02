@@ -2,7 +2,8 @@
 
 void	clean_game(t_game *game)
 {
-	free(game->map.map_string);
+	if (game->map.map_string)
+		free(game->map.map_string);
 	if (game->map.map2d)
 	{
 		ft_str2d_free(game->map.map2d);
