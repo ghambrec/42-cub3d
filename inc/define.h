@@ -19,5 +19,6 @@
 // MOVEMENT
 # define MV_ANGLE 0.04
 # define MV_SPEED 0.03
+# define MV_MOUSE_SENS 0.0005
 
 #endif

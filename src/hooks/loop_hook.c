@@ -6,9 +6,9 @@ void	loop_hook(void *param)
 
 	game = (t_game *)param;
 	if (mlx_is_key_down(game->mlx, MLX_KEY_LEFT))
-		turn_left(game);
+		turn_left(game, MV_ANGLE);
 	if (mlx_is_key_down(game->mlx, MLX_KEY_RIGHT))
-		turn_right(game);
+		turn_right(game, MV_ANGLE);
 	if (mlx_is_key_down(game->mlx, MLX_KEY_W))
 		walk_north(game);
 	if (mlx_is_key_down(game->mlx, MLX_KEY_A))
@@ -17,5 +17,6 @@ void	loop_hook(void *param)
 		walk_south(game);
 	if (mlx_is_key_down(game->mlx, MLX_KEY_D))
 		walk_east(game);
+	turn_with_mouse(game);
 	render_game(game);
 }

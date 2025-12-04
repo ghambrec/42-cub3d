@@ -29,9 +29,6 @@ uint32_t	parse_color(char *line, t_game *game);
 void        parse_rgbs(char *string, t_game *game);
 void        parse_textures(char *string, char *path, t_game *game);
 
-
-
-
 // EXIT
 void	exit_success(t_game *game);
 void    exit_failure(t_game *game, char *msg);
@@ -52,8 +49,9 @@ uint32_t	get_tile_color(char mapval);
 void		put_pixel_safe(mlx_image_t *image, uint32_t x, uint32_t y, uint32_t color);
 
 // MOVEMENT
-void	turn_left(t_game *game);
-void	turn_right(t_game *game);
+void	turn_with_mouse(t_game *game);
+void	turn_left(t_game *game, double rotation);
+void	turn_right(t_game *game, double rotation);
 void	walk_north(t_game *game);
 void	walk_west(t_game *game);
 void	walk_south(t_game *game);
