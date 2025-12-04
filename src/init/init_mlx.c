@@ -26,10 +26,8 @@ static void	load_textures(t_game *game)
 
 void	init_mlx(t_game *game)
 {
-	// mlx init
-	game->mlx = mlx_init(GAME_SCREEN_WIDTH, GAME_SCREEN_HEIGTH, "cub3d", false);
+	load_textures(game);
+	game->mlx = mlx_init(GAME_SCREEN_WIDTH, GAME_SCREEN_HEIGTH, "cub3D", false);
 	if (!game->mlx)
 		exit_failure(game, "failed to init the mlx (mlx_init)");
-
-	load_textures(game);
 }
