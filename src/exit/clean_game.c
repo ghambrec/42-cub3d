@@ -8,11 +8,15 @@ void	clean_game(t_game *game)
 	{
 		ft_str2d_free(game->map.map2d);
 		ft_str2d_free(game->map.map2d_copy);
-		free(game->texture_path.east);
-		free(game->texture_path.north);
-		free(game->texture_path.west);
-		free(game->texture_path.south);
 	}
+	if (game->texture_path.east)
+		free(game->texture_path.east);
+	if (game->texture_path.north)
+		free(game->texture_path.north);
+	if (game->texture_path.west)
+		free(game->texture_path.west);
+	if (game->texture_path.south)
+		free(game->texture_path.south);
 	if (game->textures[T_NORTH])
 		mlx_delete_texture(game->textures[T_NORTH]);
 	if (game->textures[T_EAST])
