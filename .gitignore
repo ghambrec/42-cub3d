@@ -2,3 +2,4 @@ lib/
 obj/
 cub3D
 .vscode/
+valgrind.log
