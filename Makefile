@@ -209,7 +209,7 @@ del: fclean
 run: $(NAME)
 	@./cub3D map_easy.cub
 
-valgrind:
+valgrind: $(NAME)
 	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --trace-children=no ./$(NAME) maps/default.cub
 
 .PHONY: all clean fclean re test del run valgrind
