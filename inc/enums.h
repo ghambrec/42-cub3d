@@ -5,7 +5,8 @@ typedef enum e_map_values
 {
 	MV_WALL = '1',
 	MV_FLOOR = '0',
-	MV_PLAYER = 'P'
+	MV_PLAYER = 'P',
+	MV_SPACE = ' '
 }	t_map_values;
 
 typedef enum e_textures_keys
