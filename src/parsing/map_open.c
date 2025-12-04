@@ -6,7 +6,7 @@
 /*   By: ghambrec <ghambrec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 16:12:43 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/09/08 13:52:53 by ghambrec         ###   ########.fr       */
+/*   Updated: 2025/12/04 10:40:56 by ghambrec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,10 @@ void	map_open(t_game *game)
 		if (is_texture_line(line))
 		{
 			copy_texture_paths(line, game);
+			free(line);
 			continue ;
 		}
-		temp = ft_strjoin_gnl(game->map.map_string, line);
+		temp = ft_strjoin(game->map.map_string, line);
 		free(line);
 		free(game->map.map_string);
 		game->map.map_string = ft_strdup(temp);
