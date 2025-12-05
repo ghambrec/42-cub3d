@@ -207,7 +207,7 @@ del: fclean
 
 # run rule - run the game
 run: $(NAME)
-	@./cub3D map_easy.cub
+	@./cub3D maps/default.cub
 
 valgrind: $(NAME)
 	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --trace-children=no ./$(NAME) maps/default.cub
