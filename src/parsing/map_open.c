@@ -6,7 +6,7 @@
 /*   By: ghambrec <ghambrec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 16:12:43 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/12/04 10:40:56 by ghambrec         ###   ########.fr       */
+/*   Updated: 2025/12/05 12:28:03 by ghambrec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,9 @@ void	copy_texture_paths(char *texture_path_string, t_game *game)
 
 void	get_map_width_height(t_game *game)
 {
-	int len_y;
+	int	len_y;
 	int	len_x;
-	int max_width;
+	int	max_width;
 
 	len_y = 0;
 	max_width = 0;

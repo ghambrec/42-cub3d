@@ -6,7 +6,7 @@
 /*   By: ghambrec <ghambrec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 16:13:19 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/12/05 11:40:52 by ghambrec         ###   ########.fr       */
+/*   Updated: 2025/12/05 12:27:50 by ghambrec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ static int	flood_fill(int x, int y, t_game *game)
 {
 	if (x < 0 || y < 0 || x >= game->map.max_width || y >= game->map.max_height)
 		exit_failure(game, "Map is not surrounded by Walls");
-	if (game->map.map2d[y][x] == 'E' || game->map.map2d[y][x] == 'N' || game->map.map2d[y][x] == 'S'
+	if (game->map.map2d[y][x] == 'E' || game->map.map2d[y][x] == 'N' || \
+game->map.map2d[y][x] == 'S'
 		|| game->map.map2d[y][x] == 'W')
 	{
 		game->player.player_count++;

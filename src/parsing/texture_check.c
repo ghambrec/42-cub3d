@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   texture_check.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ghambrec <ghambrec@student.42heilbronn.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/05 12:29:03 by ghambrec          #+#    #+#             */
+/*   Updated: 2025/12/05 12:31:02 by ghambrec         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 int	is_texture_line(char *line)
@@ -54,7 +66,6 @@ uint32_t	parse_color(char *line, t_game *game)
 	int			r;
 	int			g;
 	int			b;
-	uint32_t	color;
 
 	line += 2;
 	while (*line == ' ' || *line == '\t')
@@ -74,7 +85,6 @@ uint32_t	parse_color(char *line, t_game *game)
 		ft_str2d_free(rgb);
 		exit_failure(game, "Wrong rgb value");
 	}
-	color = (r << 24) | (g << 16) | (b << 8) | 255;
 	ft_str2d_free(rgb);
-	return (color);
+	return ((r << 24) | (g << 16) | (b << 8) | 255);
 }
