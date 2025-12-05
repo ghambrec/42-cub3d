@@ -6,7 +6,7 @@
 /*   By: ghambrec <ghambrec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 12:33:42 by ghambrec          #+#    #+#             */
-/*   Updated: 2025/12/04 12:34:14 by ghambrec         ###   ########.fr       */
+/*   Updated: 2025/12/05 11:19:17 by ghambrec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	exit_failure(t_game *game, char *msg)
 {
 	ft_putstr_fd("Error: ", 2);
     ft_putendl_fd(msg, 2);
-    clean_game(game);
+    if (game)
+		clean_game(game);
     exit(EXIT_FAILURE);
 }
