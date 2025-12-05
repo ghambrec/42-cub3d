@@ -1,13 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   create_minimap.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ghambrec <ghambrec@student.42heilbronn.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/05 11:26:20 by ghambrec          #+#    #+#             */
+/*   Updated: 2025/12/05 11:30:12 by ghambrec         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 // if map too big no minimap is possible
-static void check_size(t_game *game)
+static void	check_size(t_game *game)
 {
-	static int message_shown = false;
+	static int	message_shown = false;
 
 	game->minimap.mm_exist = true;
 	if (game->map.max_width > GAME_SCREEN_WIDTH / MM_SIZE || \
-		game->map.max_height > GAME_SCREEN_HEIGTH / MM_SIZE)
+game->map.max_height > GAME_SCREEN_HEIGTH / MM_SIZE)
 	{
 		game->minimap.mm_exist = false;
 		if (!message_shown)
@@ -21,11 +33,11 @@ static void check_size(t_game *game)
 // calculates sizes and offset for the minimap
 static void	calculate_sizes(t_game *game)
 {
-	t_minimap *minimap;
-	int	tile_w;
-	int	tile_h;
-	int	used_w;
-	int	used_h;
+	t_minimap	*minimap;
+	int			tile_w;
+	int			tile_h;
+	int			used_w;
+	int			used_h;
 
 	minimap = &game->minimap;
 	minimap->width = (uint32_t)game->mlx->width / MM_SIZE;
@@ -52,11 +64,13 @@ void	create_minimap(t_game *game)
 		return ;
 	if (!game->img_minimap)
 	{
-		game->img_minimap = mlx_new_image(game->mlx, game->minimap.width, game->minimap.height);
+		game->img_minimap = \
+mlx_new_image(game->mlx, game->minimap.width, game->minimap.height);
 		if (!game->img_minimap)
-			exit_failure(game, "failed to create minimap image (mlx_new_image)");
+			exit_failure(game, "failed create minimap image (mlx_new_image)");
 		if (mlx_image_to_window(game->mlx, game->img_minimap, 0, 0) < 0)
-			exit_failure(game, "failed to load minimap image to window (mlx_image_to_window)");
+			exit_failure(game, \
+"failed to load minimap image to window (mlx_image_to_window)");
 	}
 	paint_background(game);
 	paint_minimap(game);

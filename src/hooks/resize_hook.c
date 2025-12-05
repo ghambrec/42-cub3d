@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   resize_hook.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ghambrec <ghambrec@student.42heilbronn.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/05 11:24:42 by ghambrec          #+#    #+#             */
+/*   Updated: 2025/12/05 11:25:20 by ghambrec         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 void	handle_resize(t_game *game)
@@ -9,11 +21,11 @@ void	handle_resize(t_game *game)
 	render_game(game);
 }
 
+// TODO: resize game window (bisher geht nur die minimap)
+// TODO: min size festlegen
 void	resize_hook(int32_t width, int32_t height, void *param)
 {
-	// TODO: resize game window (bisher geht nur die minimap)
-	// TODO: min size festlegen
-	t_game *game;
+	t_game	*game;
 
 	(void)width;
 	(void)height;

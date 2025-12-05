@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   paint_player.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ghambrec <ghambrec@student.42heilbronn.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/05 11:32:15 by ghambrec          #+#    #+#             */
+/*   Updated: 2025/12/05 11:33:30 by ghambrec         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 // player pos = (tile_size * player_pos) + offset
-void	paint_player(t_game *game)
+void	paint_player(t_game *gme)
 {
 	t_position	pos;
 	int			size;
@@ -9,11 +21,11 @@ void	paint_player(t_game *game)
 	int			x;
 	int			y;
 
-	if (!game->minimap.mm_exist)
+	if (!gme->minimap.mm_exist)
 		return ;
-	pos.x = (game->player.pos.x * game->minimap.tile_size) + game->minimap.off_x;
-	pos.y = (game->player.pos.y * game->minimap.tile_size) + game->minimap.off_y;
-	size = game->minimap.tile_size / MM_PLAYER_SIZE;
+	pos.x = (gme->player.pos.x * gme->minimap.tile_size) + gme->minimap.off_x;
+	pos.y = (gme->player.pos.y * gme->minimap.tile_size) + gme->minimap.off_y;
+	size = gme->minimap.tile_size / MM_PLAYER_SIZE;
 	radius = size / 2;
 	y = 0;
 	while (y < size)
@@ -21,7 +33,8 @@ void	paint_player(t_game *game)
 		x = 0;
 		while (x < size)
 		{
-			put_pixel_safe(game->img_minimap, pos.x - radius + x, pos.y - radius + y, CMM_PLAYER);
+			put_pixel_safe(gme->img_minimap, \
+pos.x - radius + x, pos.y - radius + y, CMM_PLAYER);
 			x++;
 		}
 		y++;

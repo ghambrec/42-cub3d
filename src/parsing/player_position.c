@@ -41,8 +41,8 @@ void	get_player_pos(t_game *game)
 			if (game->map.map2d[y][i] == 'N' || game->map.map2d[y][i] == 'E'
 				|| game->map.map2d[y][i] == 'S' || game->map.map2d[y][i] == 'W')
 			{
-				game->player.pos1D.x = i;
-				game->player.pos1D.y = y;
+				game->player.pos1d.x = i;
+				game->player.pos1d.y = y;
 				game->player.pos.x = i + 0.5;
 				game->player.pos.y = y + 0.5;
 				get_player_dir(game, game->map.map2d[y][i]);

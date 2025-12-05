@@ -1,14 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   helpers.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ghambrec <ghambrec@student.42heilbronn.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/05 12:24:22 by ghambrec          #+#    #+#             */
+/*   Updated: 2025/12/05 12:24:46 by ghambrec         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
-void ft_print2d(char **str2d)
+void	ft_print2d(char **str2d)
 {
-    int i = 0;
-    while (str2d[i])
-    {
-        printf("%s\n", str2d[i]);
-        i++;
-    }
-    printf("\n");
+	int	i;
+
+	i = 0;
+	while (str2d[i])
+	{
+		printf("%s\n", str2d[i]);
+		i++;
+	}
+	printf("\n");
 }
 
 // HEIGTH durch 2, obere haelfte ceil untere floor
@@ -18,7 +32,6 @@ void	fill_ceil_floor(t_game *game)
 	uint32_t	y;
 	uint32_t	color;
 
-	// TODO take values from map file
 	y = 0;
 	while (y < GAME_SCREEN_HEIGTH)
 	{

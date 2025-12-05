@@ -6,7 +6,7 @@
 /*   By: ghambrec <ghambrec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 10:18:32 by ghambrec          #+#    #+#             */
-/*   Updated: 2025/12/01 10:27:49 by ghambrec         ###   ########.fr       */
+/*   Updated: 2025/12/05 11:42:54 by ghambrec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	draw_rays(t_game *game, t_ray *ray, int x)
 	texture_x = calc_texture_x(ray);
 	step = (double)ray->texture->height / (double)ray->line_height;
 	tex_pos_y = (ray->draw_start - GAME_SCREEN_HEIGTH / 2.0 + \
-		ray->line_height / 2.0) * step;
+ray->line_height / 2.0) * step;
 	y = ray->draw_start;
 	while (y <= ray->draw_end)
 	{
@@ -69,7 +69,7 @@ void	draw_rays(t_game *game, t_ray *ray, int x)
 		if (texture_y >= (int)ray->texture->height)
 			texture_y = (int)ray->texture->height - 1;
 		mlx_put_pixel(game->img_game, x, y, \
-			get_color(ray, texture_x, texture_y));
+get_color(ray, texture_x, texture_y));
 		y++;
 	}
 }

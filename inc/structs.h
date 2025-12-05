@@ -1,30 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   structs.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ghambrec <ghambrec@student.42heilbronn.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/05 11:38:24 by ghambrec          #+#    #+#             */
+/*   Updated: 2025/12/05 12:22:39 by ghambrec         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef STRUCTS_H
-#define STRUCTS_H
+# define STRUCTS_H
 
-#include "../lib/mlx/include/MLX42/MLX42.h"
-
-// player in **map auf 'P' setzen
-// position und blickrichtung des players in t_player speichern
-// position = **map position + 0.5 (x und y)
-// maximalste breite und hoehe der minimap speichern in t_minimap.max_...
-
-// blickrichtungen:
-// north: x=0, y=-1
-// east:  x=1, y=0
-// south: x=0, y=1
-// west:  x=-1, y=0
+# include "../lib/mlx/include/MLX42/MLX42.h"
 
 typedef struct s_vector
 {
-	double x;
-	double y;
-} t_vector;
+	double	x;
+	double	y;
+}	t_vector;
 
 typedef struct s_position
 {
-	int x;
-	int y;
-} t_position;
+	int	x;
+	int	y;
+}	t_position;
 
 typedef struct s_minimap
 {
@@ -34,16 +35,16 @@ typedef struct s_minimap
 	int			off_x;
 	int			off_y;
 	bool		mm_exist;
-} t_minimap;
+}	t_minimap;
 
-typedef struct	s_player
+typedef struct s_player
 {
-	t_position	pos1D;
+	t_position	pos1d;
 	t_vector	pos;
 	t_vector	dir;
 	t_vector	plane;
 	int			player_count;
-} t_player;
+}	t_player;
 
 typedef struct s_map_info
 {
@@ -53,15 +54,15 @@ typedef struct s_map_info
 	char		**map2d_copy;
 	int			max_width;
 	int			max_height;
-	uint32_t 	floor_color;
+	uint32_t	floor_color;
 	uint32_t	ceiling_color;
-} t_map_info;
+}	t_map_info;
 
 typedef struct s_size
 {
 	uint32_t	width;
 	uint32_t	height;
-} t_size;
+}	t_size;
 
 typedef struct s_textures_path
 {
@@ -70,7 +71,7 @@ typedef struct s_textures_path
 	char	*south;
 	char	*west;
 	bool	is_double;
-} t_textures_path;
+}	t_textures_path;
 
 typedef struct s_game
 {
@@ -82,7 +83,7 @@ typedef struct s_game
 	t_map_info		map;
 	t_textures_path	texture_path;
 	mlx_texture_t	*textures[4];
-} t_game;
+}	t_game;
 
 typedef struct s_ray
 {
@@ -98,7 +99,17 @@ typedef struct s_ray
 	int				line_height;
 	int				draw_start;
 	int				draw_end;
-} t_ray;
+}	t_ray;
 
+typedef struct s_bresenham
+{
+	t_position	*start;
+	t_position	*end;
+	int			dx;
+	int			dy;
+	int			sx;
+	int			sy;
+	int			err;
+}	t_bresenham;
 
 #endif

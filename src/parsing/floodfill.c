@@ -6,7 +6,7 @@
 /*   By: ghambrec <ghambrec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 16:13:19 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/10/02 13:47:30 by ghambrec         ###   ########.fr       */
+/*   Updated: 2025/12/05 11:40:52 by ghambrec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	floodfill_validation(t_game *game)
 	size_t		i;
 	int			y;
 
-	flood_fill(game->player.pos1D.x, game->player.pos1D.y, game);
+	flood_fill(game->player.pos1d.x, game->player.pos1d.y, game);
 	i = 0;
 	y = 0;
 	while (game->map.map2d_copy[y] != NULL)
