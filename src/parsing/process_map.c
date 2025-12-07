@@ -14,11 +14,12 @@
 
 static int	is_map_line(char *line)
 {
-	while (*line == ' ' || *line == '\t')
-		line++;
-	if (*line == '1' || *line == '0'
-		|| *line == 'N' || *line == 'S'
-		|| *line == 'E' || *line == 'W')
+	int	i;
+
+	i = 0;
+	while (line[i] == ' ' || line[i] == '\t')
+		i++;
+	if (line[i] == '1' || line[i] == '0')
 		return (1);
 	return (0);
 }
