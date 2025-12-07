@@ -1,7 +1,7 @@
 NO ./textures/wood.png
 SO ./textures/colorstone.png
 WE ./textures/mossy.png
-EA ./textures/redbrick.png
+EA ./textures/redbrick.pnggit 
 
 C 135,206,235
 F 58,95,11

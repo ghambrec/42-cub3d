@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_open.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghambrec <ghambrec@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 16:12:43 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/12/05 12:28:03 by ghambrec         ###   ########.fr       */
+/*   Updated: 2025/12/07 11:35:30 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,11 @@ void	map_open(t_game *game)
 	char	*temp;
 	char	*line;
 
-	fd = open(game->map.map_name, O_RDONLY);
+	fd = 0;
+	if (game->map.map_name)
+		fd = open(game->map.map_name, O_RDONLY);
+	if (fd == -1)
+		exit_failure(game, "File doesnt exist!");
 	game->map.map_string = ft_strdup("");
 	while (1)
 	{
