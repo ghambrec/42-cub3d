@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/05 11:38:24 by ghambrec          #+#    #+#             */
-/*   Updated: 2025/12/07 14:00:03 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/12/07 14:25:13 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ typedef struct s_textures_path
 	char	*west;
 	bool	is_double;
 	bool	map_started_to_early;
+	bool	rgb_error;
 }	t_textures_path;
 
 typedef struct s_game

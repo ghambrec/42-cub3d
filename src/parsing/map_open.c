@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 16:12:43 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/12/07 14:00:48 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/12/07 14:27:18 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	map_open(t_game *game)
 	if (game->texture_path.map_started_to_early == true)
 		exit_failure(game,
 			"Not all Textures and Colors are set before map starts!");
+	if (game->texture_path.rgb_error == true)
+		exit_failure(game, "Not the right number of RGB value's or the value is wrong!");
 	close(fd);
 	return ;
 }
