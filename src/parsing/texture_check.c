@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/05 12:29:03 by ghambrec          #+#    #+#             */
-/*   Updated: 2025/12/07 14:25:57 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/12/07 14:37:56 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,13 +76,13 @@ uint32_t	parse_color(char *line, t_game *game)
 		if (rgb)
 			ft_str2d_free(rgb);
 		game->texture_path.rgb_error = true;
+		return (0);
 	}
 	r = ft_atoi_rgb(rgb[0]);
 	g = ft_atoi_rgb(rgb[1]);
 	b = ft_atoi_rgb(rgb[2]);
 	if (r == -1 || g == -1 || b == -1)
 	{
-		ft_str2d_free(rgb);
 		game->texture_path.rgb_error = true;
 	}
 	ft_str2d_free(rgb);
