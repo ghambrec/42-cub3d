@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/05 12:29:03 by ghambrec          #+#    #+#             */
-/*   Updated: 2025/12/07 13:46:46 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/12/07 13:58:12 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ uint32_t	parse_color(char *line, t_game *game)
 	{
 		if (rgb)
 			ft_str2d_free(rgb);
-		exit_failure(game, "Not enough rgb values");
+		exit_failure(game, "Not the right rgb values");
 	}
 	r = ft_atoi_rgb(rgb[0]);
 	g = ft_atoi_rgb(rgb[1]);

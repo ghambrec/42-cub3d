@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 16:12:43 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/12/07 13:44:38 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/12/07 14:00:48 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,10 @@ void	copy_texture_paths(char *texture_path_string, t_game *game)
 		return ;
 	dot = ft_strchr(texture_path_string, '.');
 	if (dot == NULL)
+	{
+		game->texture_path.is_double = true;
 		return ;
+	}
 	len = 0;
 	while (dot[len] && dot[len] != '\n')
 		len++;
