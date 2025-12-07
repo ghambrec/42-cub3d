@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/05 12:33:14 by ghambrec          #+#    #+#             */
-/*   Updated: 2025/12/07 12:59:30 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/12/07 13:48:11 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ void	parse_rgbs(char *string, t_game *game)
 {
 	if (string[0] == 'F' && string[1] == ' ')
 	{
-		if (game->map.floor_color != NULL)
+		if (game->map.floor_color != 0)
 			game->texture_path.is_double = true;
 		game->map.floor_color = parse_color(string, game);
 		return ;
 	}
 	if (string[0] == 'C' && string[1] == ' ')
 	{
-		if (game->map.ceiling_color != NULL)
+		if (game->map.ceiling_color != 0)
 			game->texture_path.is_double = true;
 		game->map.ceiling_color = parse_color(string, game);
 		return ;

@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/05 11:25:25 by ghambrec          #+#    #+#             */
-/*   Updated: 2025/12/07 12:52:43 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/12/07 13:47:26 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,12 @@ void	init_game(t_game *game)
 	game->texture_path.west = NULL;
 	game->texture_path.east = NULL;
 	game->texture_path.south = NULL;
-	game->map.ceiling_color = NULL;
-	game->map.floor_color = NULL;
+	game->map.ceiling_color = 0;
+	game->map.floor_color = 0;
 	game->textures[T_NORTH] = NULL;
 	game->textures[T_EAST] = NULL;
 	game->textures[T_SOUTH] = NULL;
 	game->textures[T_WEST] = NULL;
 	game->texture_path.is_double = false;
+	game->texture_path.map_started_to_early = false;
 }

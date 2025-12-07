@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 16:12:43 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/12/07 13:30:23 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/12/07 13:44:38 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ void	map_open(t_game *game)
 	create_map_string(game, fd);
 	if (game->texture_path.is_double == true)
 		exit_failure(game, "Double Texture Paths are not allowed");
+	if (game->texture_path.map_started_to_early == true)
+		exit_failure(game,
+			"Not all Textures and Colors are set before map starts!");
 	close(fd);
 	return ;
 }
@@ -43,10 +46,10 @@ void	copy_texture_paths(char *texture_path_string, t_game *game)
 
 	parse_rgbs(texture_path_string, game);
 	if (texture_path_string[0] == 'F' || texture_path_string[0] == 'C')
-		return;
+		return ;
 	dot = ft_strchr(texture_path_string, '.');
 	if (dot == NULL)
-		return;
+		return ;
 	len = 0;
 	while (dot[len] && dot[len] != '\n')
 		len++;
@@ -54,7 +57,6 @@ void	copy_texture_paths(char *texture_path_string, t_game *game)
 	parse_textures(texture_path_string, path, game);
 	free(path);
 }
-
 
 void	get_map_width_height(t_game *game)
 {
@@ -75,35 +77,4 @@ void	get_map_width_height(t_game *game)
 	game->map.max_height = len_y;
 	if (game->map.max_width < 3 || game->map.max_height < 3)
 		exit_failure(game, "map is to small");
-}
-
-void	create_map_string(t_game *game, int fd)
-{
-	char	*line;
-	char	*temp;
-	bool	map_started;
-
-	map_started = false;
-	while (1)
-	{
-		line = get_next_line(fd);
-		if (line == NULL)
-			return ;
-		if (is_map_line(line))
-			map_started = true;
-		if (is_texture_line(line))
-		{
-			if (map_started == true)
-				exit_failure(game, "Map started before all textures and color are set!");
-			copy_texture_paths(line, game);
-			free(line);
-			continue ;
-		}
-		temp = ft_strjoin(game->map.map_string, line);
-		free(line);
-		free(game->map.map_string);
-		game->map.map_string = ft_strdup(temp);
-		free(temp);
-			
-	}
 }
