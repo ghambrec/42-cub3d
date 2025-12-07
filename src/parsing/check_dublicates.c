@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/05 12:33:14 by ghambrec          #+#    #+#             */
-/*   Updated: 2025/12/07 13:48:11 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/12/07 14:05:02 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,11 @@ void	parse_rgbs(char *string, t_game *game)
 	}
 }
 
-static void	check_dublicate(char *string, t_game *game)
+static void	check_dublicate(char *string, t_game *game, char *path)
 {
 	if (string != NULL)
 	{
+		free(path);
 		game->texture_path.is_double = true;
 	}
 }
@@ -42,22 +43,22 @@ void	parse_textures(char *string, char *path, t_game *game)
 {
 	if (string[0] == 'N' && string[1] == 'O')
 	{
-		check_dublicate(game->texture_path.north, game);
+		check_dublicate(game->texture_path.north, game, path);
 		game->texture_path.north = ft_strdup(path);
 	}
 	else if (string[0] == 'S' && string[1] == 'O')
 	{
-		check_dublicate(game->texture_path.south, game);
+		check_dublicate(game->texture_path.south, game, path);
 		game->texture_path.south = ft_strdup(path);
 	}
 	else if (string[0] == 'W' && string[1] == 'E')
 	{
-		check_dublicate(game->texture_path.west, game);
+		check_dublicate(game->texture_path.west, game, path);
 		game->texture_path.west = ft_strdup(path);
 	}
 	else if (string[0] == 'E' && string[1] == 'A')
 	{
-		check_dublicate(game->texture_path.east, game);
+		check_dublicate(game->texture_path.east, game, path);
 		game->texture_path.east = ft_strdup(path);
 	}
 }
