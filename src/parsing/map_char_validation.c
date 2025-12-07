@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 15:37:20 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/08/27 16:23:39 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/12/07 12:30:52 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,13 @@ void	char_validation(t_game *game)
 		{
 			exit_failure(game, "unallowed character");
 		}
+		if (game->map.map_string[i] == 'N' || game->map.map_string[i] == 'S'
+			|| game->map.map_string[i] == 'W' || game->map.map_string[i] == 'E')
+			game->player.player_count++;
 		i++;
 	}
+	if (game->player.player_count == 0)
+		exit_failure(game, "You need a player!");
+	game->player.player_count = 0;
 	return ;
 }

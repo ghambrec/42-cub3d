@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   functions.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghambrec <ghambrec@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/05 11:35:46 by ghambrec          #+#    #+#             */
-/*   Updated: 2025/12/05 11:38:21 by ghambrec         ###   ########.fr       */
+/*   Updated: 2025/12/07 13:26:15 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,11 @@ void		get_player_pos(t_game *game);
 void		get_map_width_height(t_game *game);
 int			is_texture_line(char *line);
 void		copy_texture_paths(char *texture_path_string, t_game *game);
-uint32_t	parse_color(char *line, t_game *game);
+uint32_t	*parse_color(char *line, t_game *game);
 void		parse_rgbs(char *string, t_game *game);
 void		parse_textures(char *string, char *path, t_game *game);
+void		create_map_string(t_game *game, int fd);
+int			is_map_line(char *line);
 
 // EXIT
 void		exit_success(t_game *game);

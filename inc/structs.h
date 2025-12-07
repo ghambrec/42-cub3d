@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghambrec <ghambrec@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/05 11:38:24 by ghambrec          #+#    #+#             */
-/*   Updated: 2025/12/05 12:22:39 by ghambrec         ###   ########.fr       */
+/*   Updated: 2025/12/07 12:52:29 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ typedef struct s_map_info
 	char		**map2d_copy;
 	int			max_width;
 	int			max_height;
-	uint32_t	floor_color;
-	uint32_t	ceiling_color;
+	uint32_t	*floor_color;
+	uint32_t	*ceiling_color;
 }	t_map_info;
 
 typedef struct s_size

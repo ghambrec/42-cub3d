@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghambrec <ghambrec@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/05 11:23:06 by ghambrec          #+#    #+#             */
-/*   Updated: 2025/12/05 11:23:07 by ghambrec         ###   ########.fr       */
+/*   Updated: 2025/12/07 13:04:39 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,8 @@ void	clean_game(t_game *game)
 		mlx_delete_texture(game->textures[T_WEST]);
 	if (game->mlx)
 		mlx_terminate(game->mlx);
+	if (game->map.floor_color)
+		free(game->map.floor_color);
+	if (game->map.ceiling_color)
+		free(game->map.ceiling_color);
 }

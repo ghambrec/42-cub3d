@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_check.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghambrec <ghambrec@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/05 12:29:03 by ghambrec          #+#    #+#             */
-/*   Updated: 2025/12/05 12:31:02 by ghambrec         ###   ########.fr       */
+/*   Updated: 2025/12/07 13:29:14 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,15 @@ int	ft_atoi_rgb(const char *str)
 	return (result);
 }
 
-uint32_t	parse_color(char *line, t_game *game)
+uint32_t	*parse_color(char *line, t_game *game)
 {
 	char		**rgb;
 	int			r;
 	int			g;
 	int			b;
+	uint32_t	*value;
 
+	value = malloc(sizeof(uint32_t));
 	line += 2;
 	while (*line == ' ' || *line == '\t')
 		line++;
@@ -86,5 +88,20 @@ uint32_t	parse_color(char *line, t_game *game)
 		exit_failure(game, "Wrong rgb value");
 	}
 	ft_str2d_free(rgb);
-	return ((r << 24) | (g << 16) | (b << 8) | 255);
+	*value = (r << 24) | (g << 16) | (b << 8) | 255;
+	return (value);
 }
+
+int is_map_line(char *line)
+{
+	int i;
+
+	i = 0;
+    while (line[i] == ' ' || line[i] == '\t')
+        i++;
+    if (line[i] == '1' || line[i] == '0')
+        return 1;
+
+    return 0;
+}
+
